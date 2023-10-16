@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+/*Variables para colores fijas*/
+:root{
+    --azul-fondo: #d4f7ff;
+    --azul-boton: #007be0;
+    --azul-menus: #40deff;
+    --blanco: #ffffff;
+    --negro: #000;
+    --rojo: #FF2626;
+
+    /*
+    --azul-radiance-200: #b2f2ff;
+    --azul-radiance-50: #ecfcff;
+    --azul-radiance-300: #7dedff;
+    --azul-radiance-500: #14c3ff;
+    --azul-: #00a4ff;
+    --azul-: #008cff;
+    --azul-radiance-900: #085fa0;
+    --azul-radiance-950: #0a3961;
+    */
+}
+
