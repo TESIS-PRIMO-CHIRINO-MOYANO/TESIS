@@ -1,0 +1,10 @@
+
+.imagen-car{
+    display: block;
+    margin: 0 auto;
+    width: 65%;
+    height: 400px;
+}
+.texto-car{
+    font-size: 1.5rem;
+}
