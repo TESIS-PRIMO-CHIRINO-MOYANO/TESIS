@@ -1,0 +1,56 @@
+[
+  {
+    "idProducto": 1,
+    "linea": "Retornable",
+    "descripcion": "En este formato te ofrecemos un bidón retornable de 20Lt de agua baja en sodio para tu mesa o tu trabajo.",
+    "nombre": "Bidon agua 20Lts",
+    "stock": 50,
+    "precio": 800,
+    "urlImagen": "assets/productos/Agua20lts.png"
+  },
+  {
+    "idProducto": 2,
+    "linea": "Descartable",
+    "descripcion": "En este formato te ofrecemos un bidón descartable de 6Lt de agua baja en sodio para tu mesa o tu trabajo.",
+    "nombre": "Bidon de agua 6Lts",
+    "stock": 100,
+    "precio": 400,
+    "urlImagen": "assets/productos/bidon6lt.png"
+  },
+  {
+    "idProducto": 3,
+    "linea": "Descartable",
+    "descripcion": "En este formato te ofrecemos 6 botellas de 2Lt de agua baja en sodio para tu mesa o tu trabajo.",
+    "nombre": "Pack de agua 2Lts",
+    "stock": 100,
+    "precio": 1600,
+    "urlImagen": "assets/productos/pack2lAgua.png"
+  },
+  {
+    "idProducto": 4,
+    "linea": "Descartable",
+    "descripcion": "En este formato te ofrecemos 12 botellas de 500ml de agua baja en sodio para tu mesa o tu trabajo.",
+    "nombre": "Pack de agua 500ml",
+    "stock": 100,
+    "precio": 2400,
+    "urlImagen": "assets/productos/PackAgua500lts.png"
+  },
+  {
+    "idProducto": 5,
+    "linea": "Descartable",
+    "descripcion": "En este formato te ofrecemos 6 sifones de 2Lt de soda baja en sodio para tu mesa o tu trabajo.",
+    "nombre": "Pack de soda 2Lt",
+    "stock": 100,
+    "precio": 1800,
+    "urlImagen": "assets/productos/Packsoda2l.png"
+  },
+  {
+    "idProducto": 6,
+    "linea": "Descartable",
+    "descripcion": "En este formato te ofrecemos12 botellas de 500ml de soda baja en sodio para tu mesa o tu trabajo.",
+    "nombre": "Pack de soda 500ml",
+    "stock": 100,
+    "precio": 1800,
+    "urlImagen": "assets/productos/PackSoda500lts.png"
+  }
+]
