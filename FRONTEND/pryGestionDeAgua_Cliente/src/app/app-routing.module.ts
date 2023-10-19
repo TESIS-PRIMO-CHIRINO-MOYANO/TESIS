@@ -4,7 +4,7 @@ import { LoginComponent } from './Components/login/login.component';
 
 const routes: Routes = [
   {path:'login' ,component: LoginComponent},
-  {path:'', loadChildren:()=> import("./Components/layout/layout.module").then(m => m.LayoutModule)},
+  {path:'pages', loadChildren:()=> import("./Components/layout/layout.module").then(m => m.LayoutModule)},
   {path:'**', redirectTo:'menu',pathMatch:'full'}
 ];
 
