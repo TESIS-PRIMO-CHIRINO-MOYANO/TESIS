@@ -5,6 +5,7 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { ProductosComponent } from './Pages/productos/productos.component';
 
+import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       {path:'', component: InicioComponent},
       {path:'inicio', component: InicioComponent},
       {path:'miCuenta', component: DashboardComponent},
-      {path:'productos', component: ProductosComponent}
+      {path:'productos', component: ProductosComponent},
+      {path:'sobreNosotros',component: SobreNosotrosComponent}
     ]
   
   
