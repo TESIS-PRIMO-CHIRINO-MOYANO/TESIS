@@ -1,0 +1,31 @@
+.centrar{
+    display: block;
+    margin: 0 auto;
+
+}
+.contenedor1{
+    align-items: center;
+}
+.col-md-4 i{
+    font-size: 150px;
+}
+
+.title1 h1{
+    text-align: center;
+    padding-top: 50px;
+    font-size: 42px;
+}
+.title1 h1::after{
+    content: "";
+    height: 4px;
+    width: 300px;
+    background-color: black;
+    display: block;
+    margin: auto;
+}
+
+.title2 h1{
+    text-align: left;
+    padding-top: 50px;
+    font-size: 24px;
+}
