@@ -1,0 +1,12 @@
+.btn-color{
+    background-color: var(--azul-boton);
+}
+.btn-color2{
+    background-color: var(--azul-boton2);
+}
+.imagen-footer{
+    display: block;
+    width: 100px;
+    height: 110px;
+    margin: 0 auto;
+}
