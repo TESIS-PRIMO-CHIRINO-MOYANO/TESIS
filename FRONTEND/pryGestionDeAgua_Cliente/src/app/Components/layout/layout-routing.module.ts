@@ -5,6 +5,8 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { InicioComponent } from './Pages/inicio/inicio.component';
 import { ProductosComponent } from './Pages/productos/productos.component';
 import { SobreNosotrosComponent } from './Pages/sobre-nosotros/sobre-nosotros.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { RegistroComponent } from './Pages/registro/registro.component';
 
 const routes: Routes = [
   {
@@ -15,7 +17,10 @@ const routes: Routes = [
       {path:'inicio', component: InicioComponent},
       {path:'miCuenta', component: DashboardComponent},
       {path:'productos', component: ProductosComponent},
-      {path:'sobreNosotros',component: SobreNosotrosComponent}
+      {path:'sobreNosotros',component: SobreNosotrosComponent},
+      {path:'login', component: LoginComponent},
+      {path:'registro', component:RegistroComponent}
+
     ]
   
   

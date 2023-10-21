@@ -9,6 +9,9 @@ import { SobreNosotrosComponent } from './Pages/sobre-nosotros/sobre-nosotros.co
 import { ProductosComponent } from './Pages/productos/productos.component';
 import { CardProductoComponent } from './card-producto/card-producto.component';
 
+import { LoginComponent } from './Pages/login/login.component';
+import { RegistroComponent } from './Pages/registro/registro.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,7 @@ import { CardProductoComponent } from './card-producto/card-producto.component';
     SobreNosotrosComponent,
     ProductosComponent,
     CardProductoComponent, 
-    
+    LoginComponent, RegistroComponent
   ],
   imports: [
     CommonModule,
