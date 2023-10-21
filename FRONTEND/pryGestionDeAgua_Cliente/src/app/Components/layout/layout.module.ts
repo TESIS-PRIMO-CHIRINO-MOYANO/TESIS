@@ -11,6 +11,7 @@ import { CardProductoComponent } from './card-producto/card-producto.component';
 
 import { LoginComponent } from './Pages/login/login.component';
 import { RegistroComponent } from './Pages/registro/registro.component';
+import { SharedModule } from 'src/app/Reutilizable/shared/shared.module';
 
 
 @NgModule({
@@ -20,11 +21,14 @@ import { RegistroComponent } from './Pages/registro/registro.component';
     SobreNosotrosComponent,
     ProductosComponent,
     CardProductoComponent, 
-    LoginComponent, RegistroComponent
+    RegistroComponent,
+    LoginComponent
+    
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    SharedModule
 
   ]
 })
