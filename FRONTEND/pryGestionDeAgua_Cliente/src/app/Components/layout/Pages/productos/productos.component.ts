@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ProductoInterface } from 'src/app/Interfaces/producto';
 import { ProductoService } from 'src/app/Services/producto.service';
 @Component({
@@ -6,6 +6,8 @@ import { ProductoService } from 'src/app/Services/producto.service';
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
+
+
 export class ProductosComponent implements OnInit{
   productos?: ProductoInterface[]; 
   constructor(
@@ -16,4 +18,5 @@ export class ProductosComponent implements OnInit{
       console.log(this.productos = result)
     })
   }
+
 }

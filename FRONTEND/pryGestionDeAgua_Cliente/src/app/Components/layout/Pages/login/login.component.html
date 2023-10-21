@@ -1,1 +1,53 @@
-<p>login works!</p>
+<section class="vh-100">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+                        <form [formGroup]="formularioLogin" (ngSubmit)="login()">
+                            <h3 class="mb-5 ">Iniciar sesión</h3>
+                            <div class="form-outline mb-4 text-start">
+                                <label class="form-label" for="userName">Correo electronico</label>
+                                <input formControlName="email" type="email" id="email"
+                                    class="form-control form-control-lg" />
+
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+
+                                    <div *ngIf="email.errors?.['required']">
+                                        El correo es obligatorio...
+                                    </div>
+                                    <div *ngIf="email.errors?.['email']">
+                                        Ingrese un fromato de correo correcto...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-4 text-start">
+                                <label class="form-label" for="password">Contraseña</label>
+                                <input formControlName="password" [type]="ocultarPassword ?  'password': 'text'"
+                                    class="form-control form-control-lg" />
+                                <div *ngIf="pass.invalid && (pass.dirty || pass.touched)" class="text-danger">
+                                    <div *ngIf="pass.errors?.['required']">
+                                        La contraseña es obligatoria...
+                                    </div>
+                                    <div *ngIf="pass.errors?.['minlength']">
+                                        La contraseña debe tener al menos 8 caracteres...
+                                    </div>
+                                </div>
+                                <button (click)="ocultarPassword = !ocultarPassword" type="button"
+                                    class="btn btn-link text-dark">{{ocultarPassword? 'Ver contraseña...' : 'Ocultar
+                                    contraseña...'}}</button>
+                            </div>
+                            <div class="d-grid gap-2">
+
+                                <button [disabled]="formularioLogin.invalid" type="submit" class="btn btn-primary">Ingresar</button>
+
+                            </div>
+                            <p class="text-center mt-3">¿No tiene cuenta? <a routerLink="/pages/registro">Regístrese</a></p>
+                            <p class="text-center mt-3"><a>Olvidé mi contraseña...</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</section>
