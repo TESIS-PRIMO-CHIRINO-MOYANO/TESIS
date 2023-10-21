@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter  } from '@angular/core';
 import { ProductoInterface } from 'src/app/Interfaces/producto';
+import { ProductoCarrito } from 'src/app/Interfaces/producto-carrito';
 
 @Component({
   selector: 'app-card-producto',
@@ -15,10 +16,31 @@ export class CardProductoComponent {
       return precio * this.valorNumeric;
   }
 
-  @Output() agregarProductoAlCarrito = new EventEmitter();
+  carrito: ProductoCarrito[] = [];
 
-  agregarAlCarrito(producto: any) {
-    this.agregarProductoAlCarrito.emit(producto);
+  constructor(){
+    const carritoEnLocalStorageString = localStorage.getItem('carrito');
+    const carritoEnLocalStorage = carritoEnLocalStorageString ? JSON.parse(carritoEnLocalStorageString) : [];
+    if (carritoEnLocalStorage) {
+      this.carrito = carritoEnLocalStorage;
+    }
 
+  }
+  agregarAlCarrito(idProducto: number, nombre: string, cantidad: number, precio: number, urlImagen: string) {
+    const productoExistente = this.carrito.find(p => p.idProducto === idProducto);
+    if (productoExistente) {
+      productoExistente.cantidad += cantidad
+    } else {
+      this.carrito.push({
+        idProducto,
+        nombre,
+        cantidad,
+        precio,
+        urlImagen
+      });
+    }
+
+    // Actualizar el carrito en el Local Storage
+    localStorage.setItem('carrito', JSON.stringify(this.carrito));
   }
 }

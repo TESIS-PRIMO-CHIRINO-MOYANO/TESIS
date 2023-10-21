@@ -1,7 +1,8 @@
-.centrar{
+ .centrar{
     display: block;
     margin: 0 auto;
 }
+/*
 .title1 h1{
     text-align: center;
     padding-top: 50px;
@@ -24,4 +25,4 @@
     font-weight: 700;
     margin-right: 30px;
     margin-bottom: 20px;
-}
+} */
