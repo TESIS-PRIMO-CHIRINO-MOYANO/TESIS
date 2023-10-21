@@ -5,6 +5,8 @@ import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { InicioComponent } from './Pages/inicio/inicio.component';
 import { ProductosComponent } from './Pages/productos/productos.component';
 import { SobreNosotrosComponent } from './Pages/sobre-nosotros/sobre-nosotros.component';
+import { LoginComponent } from './Pages/login/login.component';
+import { RegistroComponent } from './Pages/registro/registro.component';
 
 import { CarritoComponent } from './Pages/pedidos/carrito/carrito.component';
 import { ConsultarCuentaComponent } from './Pages/pedidos/consultar-cuenta/consultar-cuenta.component';
@@ -25,6 +27,8 @@ const routes: Routes = [
       {path:'consultarCuenta',component:ConsultarCuentaComponent},
       {path:'consultarPedidos',component:ConsultarPedidosComponent},
       {path:'nuevoPedido',component:NuevoPedidoComponent},
+      {path:'login', component: LoginComponent},
+      {path:'registro', component:RegistroComponent}
 
     ]
   }

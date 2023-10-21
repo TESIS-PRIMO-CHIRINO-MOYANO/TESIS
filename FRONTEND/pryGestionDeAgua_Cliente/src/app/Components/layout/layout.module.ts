@@ -13,6 +13,10 @@ import { ConsultarCuentaComponent } from './Pages/pedidos/consultar-cuenta/consu
 import { ConsultarPedidosComponent } from './Pages/pedidos/consultar-pedidos/consultar-pedidos.component';
 import { NuevoPedidoComponent } from './Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
 
+import { LoginComponent } from './Pages/login/login.component';
+import { RegistroComponent } from './Pages/registro/registro.component';
+import { SharedModule } from 'src/app/Reutilizable/shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -24,12 +28,15 @@ import { NuevoPedidoComponent } from './Pages/pedidos/nuevo-pedido/nuevo-pedido.
     CarritoComponent,
     ConsultarCuentaComponent,
     ConsultarPedidosComponent,
-    NuevoPedidoComponent, 
+    NuevoPedidoComponent,  
+    RegistroComponent,
+    LoginComponent
     
   ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    SharedModule
 
   ]
 })
