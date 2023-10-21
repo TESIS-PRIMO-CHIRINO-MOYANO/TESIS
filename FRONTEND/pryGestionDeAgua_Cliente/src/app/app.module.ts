@@ -6,19 +6,22 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './Components/login/login.component';
 import { LayoutComponent } from './Components/layout/layout.component';
 import { HttpClientModule } from '@angular/common/http';
+
+import { CarritoService } from './Services/carrito.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-   
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CarritoService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

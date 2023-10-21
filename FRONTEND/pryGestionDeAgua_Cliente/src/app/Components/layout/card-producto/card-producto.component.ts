@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter  } from '@angular/core';
 import { ProductoInterface } from 'src/app/Interfaces/producto';
 
 @Component({
@@ -15,4 +15,10 @@ export class CardProductoComponent {
       return precio * this.valorNumeric;
   }
 
+  @Output() agregarProductoAlCarrito = new EventEmitter();
+
+  agregarAlCarrito(producto: any) {
+    this.agregarProductoAlCarrito.emit(producto);
+
+  }
 }
