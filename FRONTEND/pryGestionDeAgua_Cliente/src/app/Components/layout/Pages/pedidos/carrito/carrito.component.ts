@@ -9,7 +9,9 @@ import { ProductoCarrito } from 'src/app/Interfaces/producto-carrito';
 export class CarritoComponent {
   carrito: ProductoCarrito[] = [];
   total:number = 0 ;
+  sguirComprando: boolean = false;
   constructor() {
+    
     this.actualizarLocal();
   this.calcularTotal();
     this.exito = false;
@@ -50,6 +52,7 @@ export class CarritoComponent {
     this.actualizarLocal();
     this.total = 0;
     this.exito=true;
+    this.sguirComprando = true;
   }
 
 }
