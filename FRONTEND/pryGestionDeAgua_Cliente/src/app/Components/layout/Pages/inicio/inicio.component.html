@@ -34,13 +34,12 @@
     </div>
     <br>
 
-<section class="centrar">
+  <section class="centrar">
       <h2 class=" text-center my-3">Productos destacados</h2>
       <div class="container centrar-tarjetas">
           <div class="row">
-              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-12 " *ngFor="let p of productos">
-                <app-card-producto *ngIf="p.idProducto == 1 ||
-              p.idProducto == 3 || p.idProducto == 2 " [producto]="p"></app-card-producto>
+              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-12" *ngFor="let p of productos">
+                <app-card-producto *ngIf="p.idProducto == 1 || p.idProducto == 3 || p.idProducto == 2 " [producto]="p"></app-card-producto>
               </div>     
           </div>
       </div>
@@ -55,7 +54,6 @@
               <h5 class="card-title">Repartimos por Todo Córdoba</h5>
               <p class="card-text">Buscamos estar al alcance de todos los vecinos, por eso ampliamos nuestra red de distribucion constantemente.</p>
             </div>
-            
           </div>
         </div>
 
