@@ -1,0 +1,14 @@
+.centrar{
+    display: block;
+    margin: 0 auto;
+}
+.title h1{
+    text-align: center;
+    align-items: center;
+}
+
+.card{
+    height: 400px; 
+    min-width: 290px;
+    max-width: 290px;
+}
