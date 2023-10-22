@@ -33,8 +33,21 @@
         <button type="button" class="btn btn-success btn-lg centrar">Hace tu Pedido</button>
     </div>
     <br>
+
+<section class="centrar">
+      <h2 class=" text-center my-3">Productos destacados</h2>
+      <div class="container centrar-tarjetas">
+          <div class="row">
+              <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-12 " *ngFor="let p of productos">
+                <app-card-producto *ngIf="p.idProducto == 1 ||
+              p.idProducto == 3 || p.idProducto == 2 " [producto]="p"></app-card-producto>
+              </div>     
+          </div>
+      </div>
+  </section>
+
+  <h2 class=" text-center my-3">¿Por qué elegirnos? </h2>
     <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto">
-        
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-12 ">
           <div class="card mx-auto" >
             <img src="assets\img\5.png" class="img centrar img-card"  >
@@ -74,5 +87,8 @@
         src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Francisco%20N%20de%20Laprida%202882,%20Ciudad%20de%20C%C3%B3rdoba,%20Provincia%20de%20C%C3%B3rdoba+(La%20Hilda%20Embotelladora%20de%20Agua)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
         <a href="https://www.gps.ie/sport-gps/">hiking gps</a></iframe></div>
       <br>
-    
+      
+      <a href="https://api.whatsapp.com/send?phone=+5493515937318&text=Hola,%20quiero%20realizar%20una%20consulta,Gracias!" 
+      class="whatsapp" target="_blank"><i class="bi bi-whatsapp"></i></a>
+
 </section>
