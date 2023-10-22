@@ -15,7 +15,10 @@
     background: linear-gradient(to bottom, #b0e0e6, #87ceeb);
    
 }
-.btn-custom-color {
+.btn-color {
     background-color: #3e8ba5; /* Cambia este valor al color deseado */
     color: #fff; /* Establece el color del texto en blanco o en otro color contrastante */
   }
+.btn-color:hover {
+    background-color: #24505e;
+}

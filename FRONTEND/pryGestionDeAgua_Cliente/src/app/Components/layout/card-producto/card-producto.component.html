@@ -1,17 +1,17 @@
 
 <div class="card w-100 mx-auto">
-    <div class="card-side front card-body">
+    <div class="card-side front card-body tarjeta">
         <img src="{{producto.urlImagen}}" class="card-img-top imagen" alt="...">
         <div class="card-body">
             <h4 class="card-title text-center ">{{producto.nombre}}</h4>
             <p class="card-text">{{producto.descripcion | slice:0:80 }}...</p>
-        <span class="badge text-bg-primary p-2 mt-2">{{producto.linea}}</span>
-        <span class="badge text-bg-danger p-2 mx-2 mt-2">Precio: ${{producto.precio}}</span>
+            <div class="d-flex justify-content-between">
+                <span class="badge text-color1 p-2 mt-3">{{producto.linea}}</span>
+                <span class="badge text-color2 p-2 mt-3">Precio: ${{producto.precio}}</span>
+            </div>
         </div>
-
-
     </div>
-    <div class="card-side back">
+    <div class="card-side back tarjeta">
         <div class="card-body">
             <h3 class="card-title pricing-card-title text-center">{{producto.nombre}} </h3>
             <p class="card-text mb-3">{{producto.descripcion}}</p>
@@ -21,7 +21,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col text-start">
-                                <button type="button" class="btn btn-primary w-75  " [disabled]="valorNumeric <= 1" (click)="valorNumeric = valorNumeric - 1">
+                                <button type="button" class="btn btn-color w-75  " [disabled]="valorNumeric <= 1" (click)="valorNumeric = valorNumeric - 1">
                                     <i class="bi bi-dash-lg"></i>
                                 </button>
 
@@ -31,7 +31,7 @@
 
                             </div>
                             <div class="col text-end">
-                                <button type="button" class="btn btn-primary  w-75  " (click)="valorNumeric = valorNumeric+ 1">
+                                <button type="button" class="btn btn-color  w-75  " (click)="valorNumeric = valorNumeric+ 1">
                                     <i class="bi bi-plus-lg"></i>
                                 </button>
                             </div>
@@ -47,10 +47,9 @@
 
             </div>
 
-            <button type="button" class="w-100 btn btn-lg btn-outline-primary p-1 my-3" (click)="agregarAlCarrito(producto.idProducto, producto.nombre, valorNumeric, producto.precio, producto.urlImagen)"><i
+            <button type="button" class="w-100 btn btn-color btn-outline-primary p-1 my-3" (click)="agregarAlCarrito(producto.idProducto, producto.nombre, valorNumeric, producto.precio, producto.urlImagen)"><i
                     class="bi bi-cart-plus mx-2"></i>Agregar al carrito</button>
         </div>
-
 
     </div>
 </div>
