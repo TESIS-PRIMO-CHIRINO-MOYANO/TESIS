@@ -27,20 +27,28 @@ export class CardProductoComponent {
 
   }
   agregarAlCarrito(idProducto: number, nombre: string, cantidad: number, precio: number, urlImagen: string) {
-    const productoExistente = this.carrito.find(p => p.idProducto === idProducto);
-    if (productoExistente) {
-      productoExistente.cantidad += cantidad
+    const carritoActualString = localStorage.getItem('carrito');
+    const carritoActual = carritoActualString ? JSON.parse(carritoActualString) : [];
+
+    const productoExistenteIndex = carritoActual.findIndex((p: { idProducto: number; }) => p.idProducto === idProducto);
+
+    if (productoExistenteIndex !== -1) {
+        // Si el producto ya existe, aumentar la cantidad
+        carritoActual[productoExistenteIndex].cantidad += cantidad;
     } else {
-      this.carrito.push({
-        idProducto,
-        nombre,
-        cantidad,
-        precio,
-        urlImagen
-      });
+        // Si el producto no existe, agregarlo al carrito
+        carritoActual.push({
+            idProducto,
+            nombre,
+            cantidad,
+            precio,
+            urlImagen
+        });
     }
 
-    // Actualizar el carrito en el Local Storage
-    localStorage.setItem('carrito', JSON.stringify(this.carrito));
+    // Almacenar el carrito actualizado en el Local Storage
+    localStorage.setItem('carrito', JSON.stringify(carritoActual));
   }
+
+  
 }
