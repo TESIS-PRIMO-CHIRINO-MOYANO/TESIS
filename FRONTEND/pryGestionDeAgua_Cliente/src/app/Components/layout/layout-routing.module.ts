@@ -11,7 +11,7 @@ import { RegistroComponent } from './Pages/registro/registro.component';
 import { CarritoComponent } from './Pages/pedidos/carrito/carrito.component';
 import { ConsultarCuentaComponent } from './Pages/pedidos/consultar-cuenta/consultar-cuenta.component';
 import { ConsultarPedidosComponent } from './Pages/pedidos/consultar-pedidos/consultar-pedidos.component';
-import { NuevoPedidoComponent } from './Pages/pedidos/nuevo-pedido/nuevo-pedido.component';
+
 
 const routes: Routes = [
   {
@@ -26,7 +26,6 @@ const routes: Routes = [
       {path:'carrito',component:CarritoComponent},
       {path:'consultarCuenta',component:ConsultarCuentaComponent},
       {path:'consultarPedidos',component:ConsultarPedidosComponent},
-      {path:'nuevoPedido',component:NuevoPedidoComponent},
       {path:'login', component: LoginComponent},
       {path:'registro', component:RegistroComponent}
 
