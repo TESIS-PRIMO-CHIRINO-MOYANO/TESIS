@@ -74,3 +74,10 @@
   background-color: #e7c157; 
   color: #000000; 
 }
+
+.tamaño-mensaje{
+
+  height: 20px;
+  font-size: 12px;
+  padding: 3px;
+}

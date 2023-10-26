@@ -49,6 +49,11 @@
 
             <button type="button" class="w-100 btn btn-color btn-outline-primary p-1 my-3" (click)="agregarAlCarrito(producto.idProducto, producto.nombre, valorNumeric, producto.precio, producto.urlImagen)"><i
                     class="bi bi-cart-plus mx-2"></i>Agregar al carrito</button>
+
+                    <div class="d-grid gap-2" *ngIf="mensajeAgregado">
+                        
+                        <span class="badge  bg-success  tamaño-mensaje">Producto Agregado con exito</span>
+                      </div>
         </div>
 
     </div>
