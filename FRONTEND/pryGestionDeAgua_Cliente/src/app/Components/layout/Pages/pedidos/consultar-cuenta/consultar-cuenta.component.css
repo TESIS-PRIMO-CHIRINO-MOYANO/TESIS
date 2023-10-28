@@ -1,14 +1,30 @@
-.centrar{
+.centrar {
     display: block;
     margin: 0 auto;
 }
-.title h1{
-    text-align: center;
-    align-items: center;
+
+.tarjeta {
+    min-height: 140px;
+    min-width: 200px;
+    box-shadow: 11px 15px 17px 1px rgba(0,0,0,0.27);
+-webkit-box-shadow: 11px 15px 17px 1px rgba(0,0,0,0.27);
+-moz-box-shadow: 11px 15px 17px 1px rgba(0,0,0,0.27);
 }
 
-.card{
-    height: 400px; 
-    min-width: 290px;
-    max-width: 290px;
+.col-tar-1{
+    background: rgb(0,23,255);
+    background: linear-gradient(87deg, rgba(0,23,255,1) 30%, rgba(156,172,255,1) 73%);
+}
+
+.col-tar-2{background: rgb(0,23,255);
+background: linear-gradient(87deg, rgba(0,23,255,1) 30%, rgba(156,172,255,1) 73%);
+}
+.col-tar-3{background: rgb(0,23,255);
+background: linear-gradient(87deg, rgba(0,23,255,1) 30%, rgba(156,172,255,1) 73%);
+}
+.col-tar-4{background: rgb(0,23,255);
+background: linear-gradient(87deg, rgba(0,23,255,1) 30%, rgba(156,172,255,1) 73%);
+}
+.col-tar-5{background: rgb(0,23,255);
+background: linear-gradient(87deg, rgba(0,23,255,1) 30%, rgba(156,172,255,1) 73%);
 }

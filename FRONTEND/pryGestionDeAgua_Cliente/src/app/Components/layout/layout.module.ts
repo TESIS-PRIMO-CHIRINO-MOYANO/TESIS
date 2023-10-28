@@ -10,7 +10,7 @@ import { ProductosComponent } from './Pages/productos/productos.component';
 import { CardProductoComponent } from './card-producto/card-producto.component';
 import { CarritoComponent } from './Pages/pedidos/carrito/carrito.component';
 import { ConsultarCuentaComponent } from './Pages/pedidos/consultar-cuenta/consultar-cuenta.component';
-import { ConsultarPedidosComponent } from './Pages/pedidos/consultar-pedidos/consultar-pedidos.component';
+
 
 
 import { LoginComponent } from './Pages/login/login.component';
@@ -27,7 +27,7 @@ import { SharedModule } from 'src/app/Reutilizable/shared/shared.module';
     CardProductoComponent,
     CarritoComponent,
     ConsultarCuentaComponent,
-    ConsultarPedidosComponent,  
+ 
     RegistroComponent,
     LoginComponent
     
