@@ -14,12 +14,16 @@ namespace ApiGestionAgua.Modelos
         [Required]
         public int Stock { get; set; }
 
+
         [Required]
         [Column(TypeName = "decimal(11,2)")]
         public decimal Precio { get; set; }
 
         [Required]
         public string UrlImagen { get; set; }
+
+        [Required]
+        public int Estado { get; set; }
 
         [ForeignKey("IdLinea")]
         public int IdLinea { get; set; }

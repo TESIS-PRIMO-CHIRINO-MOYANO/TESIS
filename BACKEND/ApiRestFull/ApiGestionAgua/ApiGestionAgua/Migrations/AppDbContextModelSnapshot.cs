@@ -346,6 +346,9 @@ namespace ApiGestionAgua.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdProducto"));
 
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdLinea")
                         .HasColumnType("int");
 
