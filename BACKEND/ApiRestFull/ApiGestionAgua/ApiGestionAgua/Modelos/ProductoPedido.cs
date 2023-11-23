@@ -15,9 +15,11 @@ namespace ApiGestionAgua.Modelos
         public decimal Total { get; set; }
 
         public int IdPedido { get; set; }
+        [ForeignKey("IdPedido")]
         public Pedido Pedido { get; set; }
 
         public int IdProducto { get; set; }
+        [ForeignKey("IdProducto")]
         public Producto Producto { get; set; }
 
     }

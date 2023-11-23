@@ -44,12 +44,12 @@ namespace ApiGestionAgua.Controllers
 
         }
 
-        [HttpGet("{IdProducto:int}",Name = "GetProductos")]
+        [HttpGet("{IdProducto:int}",Name = "GetProducto")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult getProducto(int IdProducto)
+        public IActionResult GetProducto(int IdProducto)
         {
             var itemProducto = _pRepo.GetProducto(IdProducto);
 
@@ -63,7 +63,7 @@ namespace ApiGestionAgua.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(201,Type = typeof(ProductoDTO))]
+        [ProducesResponseType(201, Type = typeof(ProductoDTO))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -79,20 +79,74 @@ namespace ApiGestionAgua.Controllers
             }
             if (_pRepo.ExisteProducto(productoDTO.Nombre)) 
             {
-                ModelState.AddModelError("","El producto ya existe");
-                return StatusCode(404, ModelState);
+                ModelState.AddModelError("", "El producto ya existe");
+                return BadRequest(ModelState);
             }
 
             var producto= _mapper.Map<Producto>(productoDTO);
             if (!_pRepo.CrearProducto(producto)) 
             {
-                ModelState.AddModelError("", $"Algo salio mal guardando el registro{producto.Nombre}");
+                ModelState.AddModelError("", $"Algo salió mal guardando el registro {producto.Nombre}");
                 return StatusCode(500, ModelState);
             }
-            return CreatedAtRoute("GetProducto", new { productoId = producto.IdProducto }, producto);
+            var productoCreadoDTO = _mapper.Map<ProductoDTO>(producto);
+
+            return CreatedAtRoute("GetProducto", new { IdProducto = producto.IdProducto }, productoCreadoDTO);
+
+        }
+        [HttpPatch("{IdProducto:int}", Name = "ActualizarProducto")]//Este te deja actualizar parcialmente el put si osi tenes qu epasar todos los campos
+        [ProducesResponseType(201, Type = typeof(ProductoDTO))]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult ActualizarProducto(int IdProducto,[FromBody] ProductoDTO productoDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (productoDTO == null || productoDTO.IdProducto != IdProducto)
+            {
+                return BadRequest(ModelState);
+            }
+            
+
+            var producto = _mapper.Map<Producto>(productoDTO);
+            if (!_pRepo.ActualizarProducto(producto))
+            {
+                ModelState.AddModelError("", $"Algo salió mal guardando el registro {producto.Nombre}");
+                return StatusCode(500, ModelState);
+            }
+            var productoCreadoDTO = _mapper.Map<ProductoDTO>(producto);
+
+            return NoContent();
 
         }
 
+
+        [HttpDelete("{IdProducto:int}", Name = "BorrarProducto")]//Este te deja actualizar parcialmente el put si osi tenes qu epasar todos los campos
+        [ProducesResponseType(201, Type = typeof(ProductoDTO))]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult BorrarProducto(int IdProducto)
+        {
+            if (!_pRepo.ExisteProducto(IdProducto))
+            { 
+                return NotFound();
+            }
+            var producto = _pRepo.GetProducto(IdProducto);
+            if (!_pRepo.BorrarProducto(producto))
+            {
+                ModelState.AddModelError("", $"Algo salió mal borrando el registro {producto.Nombre}");
+                return StatusCode(500, ModelState);
+            }
+            var productoCreadoDTO = _mapper.Map<ProductoDTO>(producto);
+
+            return NoContent();
+
+        }
 
     }
 }

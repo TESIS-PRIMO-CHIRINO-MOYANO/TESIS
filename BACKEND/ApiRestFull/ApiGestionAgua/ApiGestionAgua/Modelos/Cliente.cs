@@ -25,14 +25,15 @@ namespace ApiGestionAgua.Modelos
         public string Telefono { get; set; }
 
 
-        [ForeignKey("IdUsuario")]
         public int IdUsuario { get; set; }
 
+        [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; }
 
-        [ForeignKey("IdCuenta")]
+       
         public int IdCuenta { get; set; }
 
+        [ForeignKey("IdCuenta")]
         public CuentaCorriente CuentaCorriente { get; set; }
 
     }

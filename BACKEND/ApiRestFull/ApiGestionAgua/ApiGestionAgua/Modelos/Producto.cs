@@ -25,9 +25,9 @@ namespace ApiGestionAgua.Modelos
         [Required]
         public int Estado { get; set; }
 
-        [ForeignKey("IdLinea")]
+    
         public int IdLinea { get; set; }
-
+        [ForeignKey("IdLinea")]//Se usa antes del modelo donde se buscara la clave foranea
         public Linea Linea { get; set; }    
 
     }

@@ -14,9 +14,9 @@ namespace ApiGestionAgua.Modelos
         [Required]
         public bool Estado { get; set; }
 
-        [ForeignKey("IdZona")]
         public int IdZona { get; set; }
 
+        [ForeignKey("IdZona")]
         public Zona Zona { get; set; }
     }
 }
