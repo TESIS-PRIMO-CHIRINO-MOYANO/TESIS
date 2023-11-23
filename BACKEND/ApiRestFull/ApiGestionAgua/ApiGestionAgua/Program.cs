@@ -1,4 +1,7 @@
+using ApiGestionAgua.AutoMapper;
 using ApiGestionAgua.Data;
+using ApiGestionAgua.Repositorio;
+using ApiGestionAgua.Repositorio.IRepositorio;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,13 @@ builder.Services.AddDbContext<AppDbContext>(opciones => {
     opciones.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql"));
 
 });
+
+//Agregamos los repositorios
+builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
+
+
+//Agreganos el AutoMapper
+builder.Services.AddAutoMapper(typeof(AguaMapper));
 
 // Add services to the container.
 
