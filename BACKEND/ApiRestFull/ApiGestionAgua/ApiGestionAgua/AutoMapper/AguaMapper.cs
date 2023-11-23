@@ -4,12 +4,13 @@ using AutoMapper;
 
 namespace ApiGestionAgua.AutoMapper
 {
-    public class AutoMapper : Profile
+    public class AguaMapper : Profile
     {
 
-        public AutoMapper()
+        public AguaMapper()
         {
-            CreateMap<Producto, ProdutoDTO>().ReverseMap();
+
+            CreateMap<Producto, ProductoDTO>().ReverseMap();
             
         }
 

@@ -50,7 +50,7 @@ namespace ApiGestionAgua.Repositorio
 
         public Producto GetProducto(int id)
         {
-            return _bd.Producto.FirstOrDefault(p=>p.IdProducto == id);
+            return _bd.Producto.FirstOrDefault(p => p.IdProducto == id);
         }
 
         public ICollection<Producto> GetProductos()

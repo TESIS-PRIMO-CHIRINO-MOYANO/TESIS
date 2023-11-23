@@ -19,19 +19,19 @@ namespace ApiGestionAgua.Modelos
         [Required]
         public DateTime Fecha { get; set; }
 
-        [ForeignKey("IdUsuario")]
         public int IdUsuario { get; set; }
 
+        [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; }
 
-        [ForeignKey("IdProveedor")]
         public int IdProveedor { get; set; }
 
+        [ForeignKey("IdProveedor")]
         public Proveedor Proveedor { get; set; }
 
-        [ForeignKey("IdInsumo")]
         public int IdInsumo { get; set; }
 
+        [ForeignKey("IdInsumo")]
         public Insumo Insumo { get; set; }
 
     }

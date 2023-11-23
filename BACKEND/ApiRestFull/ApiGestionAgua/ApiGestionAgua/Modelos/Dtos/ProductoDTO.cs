@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ApiGestionAgua.Modelos.Dtos
 {
-    public class ProdutoDTO
+    public class ProductoDTO
     {
 
         

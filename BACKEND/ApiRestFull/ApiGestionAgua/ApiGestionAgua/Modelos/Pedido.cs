@@ -16,24 +16,24 @@ namespace ApiGestionAgua.Modelos
         [Column(TypeName = "decimal(11,2)")]
         public decimal ImporteTotal { get; set; }
 
-        [ForeignKey("IdCliente")]
         public int IdCliente { get; set; }
 
+        [ForeignKey("IdCliente")]
         public Cliente Cliente { get; set; }
 
-        [ForeignKey("IdPatente")]
         public int IdPatente { get; set; }
 
+        [ForeignKey("IdPatente")]
         public Vehiculo Vehiculo { get; set; }
 
-        [ForeignKey("IdZona")]
         public int IdZona { get; set; }
 
+        [ForeignKey("IdZona")]
         public Zona Zona { get; set; }
 
-        [ForeignKey("IdEstado")]
         public int IdEstado { get; set; }
 
+        [ForeignKey("IdEstado")]
         public Estado Estado { get; set; }
 
     }
