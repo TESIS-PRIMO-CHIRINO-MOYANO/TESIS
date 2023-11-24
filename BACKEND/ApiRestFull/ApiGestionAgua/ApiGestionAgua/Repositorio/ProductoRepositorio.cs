@@ -30,7 +30,7 @@ namespace ApiGestionAgua.Repositorio
 
         public bool CrearProducto(Producto producto)
         {
-            _bd.Producto.Update(producto);
+            _bd.Producto.Add(producto);
             return Guardar();
         }
 

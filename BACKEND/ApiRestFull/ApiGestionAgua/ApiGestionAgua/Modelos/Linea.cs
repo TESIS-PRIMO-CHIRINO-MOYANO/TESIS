@@ -9,6 +9,7 @@ namespace ApiGestionAgua.Modelos
         public int IdLinea { get; set; }
 
         [Required]
+        [MaxLength(50)]
         public string Nombre { get; set; }
     }
 }

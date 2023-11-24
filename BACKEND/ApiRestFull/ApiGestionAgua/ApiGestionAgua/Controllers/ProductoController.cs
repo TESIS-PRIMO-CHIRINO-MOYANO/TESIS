@@ -101,11 +101,8 @@ namespace ApiGestionAgua.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult ActualizarProducto(int IdProducto,[FromBody] ProductoDTO productoDTO)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            if (productoDTO == null || productoDTO.IdProducto != IdProducto)
+          
+            if (!ModelState.IsValid || productoDTO == null || productoDTO.IdProducto != IdProducto)
             {
                 return BadRequest(ModelState);
             }
