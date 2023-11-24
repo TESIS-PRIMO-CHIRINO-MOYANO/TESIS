@@ -18,9 +18,9 @@ namespace ApiGestionAgua.Modelos
         [Required]
         public String Apellido { get; set; }
 
-        [ForeignKey("IdRol")]
         public int IdRol { get; set; }
 
+        [ForeignKey("IdRol")]
         public Rol Rol { get; set; }
 
     }

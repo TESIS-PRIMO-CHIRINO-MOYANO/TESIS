@@ -16,9 +16,9 @@ namespace ApiGestionAgua.Modelos
         [Required]
         public DateTime Fecha { get; set; }
 
-        [ForeignKey("IdMedioPago")]
         public int IdMedioPago { get; set; }
 
+        [ForeignKey("IdMedioPago")]
         public MedioPago MedioPago { get; set; }
 
     }
