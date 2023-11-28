@@ -12,6 +12,8 @@ namespace ApiGestionAgua.AutoMapper
 
             CreateMap<Producto, ProductoDTO>().ReverseMap();
             CreateMap<Linea, LineaDTO>().ReverseMap();
+            CreateMap<Vehiculo, VehiculoDTO>().ReverseMap();
+            CreateMap<Barrio, BarrioDTO>().ReverseMap();
         }
 
     }
