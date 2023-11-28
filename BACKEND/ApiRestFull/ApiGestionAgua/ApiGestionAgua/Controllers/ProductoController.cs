@@ -30,6 +30,7 @@ namespace ApiGestionAgua.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
+
         public IActionResult GetProductos()
         {
             var ListaProducto = _pRepo.GetProductos();
@@ -49,6 +50,7 @@ namespace ApiGestionAgua.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public IActionResult GetProducto(int IdProducto)
         {
             var itemProducto = _pRepo.GetProducto(IdProducto);
@@ -67,6 +69,7 @@ namespace ApiGestionAgua.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         public IActionResult CrearProducto([FromBody] ProductoDTO productoDTO)
         {
             if (!ModelState.IsValid) 
@@ -94,11 +97,13 @@ namespace ApiGestionAgua.Controllers
             return CreatedAtRoute("GetProducto", new { IdProducto = producto.IdProducto }, productoCreadoDTO);
 
         }
+        
         [HttpPatch("{IdProducto:int}", Name = "ActualizarProducto")]//Este te deja actualizar parcialmente el put si osi tenes qu epasar todos los campos
         [ProducesResponseType(201, Type = typeof(ProductoDTO))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        
         public IActionResult ActualizarProducto(int IdProducto,[FromBody] ProductoDTO productoDTO)
         {
           
@@ -120,13 +125,13 @@ namespace ApiGestionAgua.Controllers
 
         }
 
-
         [HttpDelete("{IdProducto:int}", Name = "BorrarProducto")]//Este te deja actualizar parcialmente el put si osi tenes qu epasar todos los campos
         [ProducesResponseType(201, Type = typeof(ProductoDTO))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        
         public IActionResult BorrarProducto(int IdProducto)
         {
             if (!_pRepo.ExisteProducto(IdProducto))

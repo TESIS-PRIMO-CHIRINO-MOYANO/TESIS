@@ -36,13 +36,12 @@ namespace ApiGestionAgua.Controllers
 
         }
 
-
-
         [HttpGet("{IdLinea:int}", Name = "GetLinea")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public IActionResult GetLinea(int IdLinea)
         {
             var itemLinea = _lRepo.GetLinea(IdLinea);
@@ -55,11 +54,13 @@ namespace ApiGestionAgua.Controllers
             return Ok(itemLineaDTO);
 
         }
+        
         [HttpPost]
         [ProducesResponseType(201, Type = typeof(LineaDTO))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         public IActionResult CrearLinea([FromBody] LineaDTO lineaDTO)
         {
             if (!ModelState.IsValid)
@@ -91,6 +92,7 @@ namespace ApiGestionAgua.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         public IActionResult ActualizarLinea(int idLinea, [FromBody] LineaDTO lineaDTO)
         {
             if (!ModelState.IsValid || lineaDTO == null || lineaDTO.IdLinea != idLinea)
@@ -109,11 +111,11 @@ namespace ApiGestionAgua.Controllers
             return NoContent();
         }
 
-
         [HttpDelete("{idLinea:int}", Name = "BorrarLinea")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+
         public IActionResult BorrarLinea(int idLinea)
         {
             if (!_lRepo.ExisteLinea(idLinea))
