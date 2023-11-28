@@ -9,6 +9,9 @@ namespace ApiGestionAgua.Modelos
         public int IdPatente { get; set; }
 
         [Required]
+        public string Patente { get; set; } 
+
+        [Required]
         public string Nombre { get; set; }
 
     }
