@@ -19,6 +19,8 @@ builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
 builder.Services.AddScoped<ILineaRepositorio, LineaRepositorio>();
 builder.Services.AddScoped<IVehiculoRepositorio, VehiculoRepositorio>();
 builder.Services.AddScoped<IBarrioRepositorio, BarrioRepositorio>();
+builder.Services.AddScoped<IProveedorRepositorio, ProveedorRepositorio>();
+builder.Services.AddScoped<IInsumoRepositorio, InsumoRepositorio>();
 
 //Agreganos el AutoMapper
 builder.Services.AddAutoMapper(typeof(AguaMapper));
