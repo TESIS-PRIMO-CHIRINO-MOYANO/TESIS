@@ -16,6 +16,8 @@ builder.Services.AddDbContext<AppDbContext>(opciones => {
 //Agregamos los repositorios
 builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
 builder.Services.AddScoped<ILineaRepositorio, LineaRepositorio>();
+builder.Services.AddScoped<IProveedorRepositorio, ProveedorRepositorio>();
+builder.Services.AddScoped<IInsumoRepositorio, InsumoRepositorio>();
 
 //Agreganos el AutoMapper
 builder.Services.AddAutoMapper(typeof(AguaMapper));
