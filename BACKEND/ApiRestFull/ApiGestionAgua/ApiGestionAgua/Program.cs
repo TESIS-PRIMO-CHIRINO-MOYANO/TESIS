@@ -23,6 +23,11 @@ builder.Services.AddScoped<IProveedorRepositorio, ProveedorRepositorio>();
 builder.Services.AddScoped<IInsumoRepositorio, InsumoRepositorio>();
 builder.Services.AddScoped<IZonaRepositorio, ZonaRepositorio>();
 builder.Services.AddScoped<IEstadoRepositorio, EstadoRepositorio>();
+builder.Services.AddScoped<IModuloRepositorio, ModuloRepositorio>();
+builder.Services.AddScoped<IMedioPagoRepositorio, MedioPagoRepositorio>();
+builder.Services.AddScoped<IRolRepositorio, RolRepositorio>();
+builder.Services.AddScoped<ICuentaRepositorio, CuentaCorrienteRepositorio>();
+
 //Agreganos el AutoMapper
 builder.Services.AddAutoMapper(typeof(AguaMapper));
 
