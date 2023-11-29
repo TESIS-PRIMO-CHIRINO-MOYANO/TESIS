@@ -125,7 +125,7 @@ namespace ApiGestionAgua.Controllers
 
         }
 
-        [HttpDelete("{IdProducto:int}", Name = "BorrarProducto")]//Este te deja actualizar parcialmente el put si osi tenes qu epasar todos los campos
+        [HttpDelete("{IdProducto:int}", Name = "BorrarProducto")]
         [ProducesResponseType(201, Type = typeof(ProductoDTO))]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

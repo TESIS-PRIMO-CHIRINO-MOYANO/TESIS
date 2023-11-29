@@ -14,10 +14,15 @@ builder.Services.AddDbContext<AppDbContext>(opciones => {
 });
 
 //Agregamos los repositorios
+
 builder.Services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
 builder.Services.AddScoped<ILineaRepositorio, LineaRepositorio>();
+builder.Services.AddScoped<IVehiculoRepositorio, VehiculoRepositorio>();
+builder.Services.AddScoped<IBarrioRepositorio, BarrioRepositorio>();
 builder.Services.AddScoped<IProveedorRepositorio, ProveedorRepositorio>();
 builder.Services.AddScoped<IInsumoRepositorio, InsumoRepositorio>();
+builder.Services.AddScoped<IZonaRepositorio, ZonaRepositorio>();
+builder.Services.AddScoped<IEstadoRepositorio, EstadoRepositorio>();
 builder.Services.AddScoped<IModuloRepositorio, ModuloRepositorio>();
 builder.Services.AddScoped<IMedioPagoRepositorio, MedioPagoRepositorio>();
 builder.Services.AddScoped<IRolRepositorio, RolRepositorio>();

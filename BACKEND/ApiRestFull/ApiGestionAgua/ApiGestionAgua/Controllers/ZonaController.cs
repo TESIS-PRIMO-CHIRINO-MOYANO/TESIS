@@ -2,111 +2,114 @@
 using ApiGestionAgua.Modelos.Dtos;
 using ApiGestionAgua.Repositorio.IRepositorio;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiGestionAgua.Controllers
 {
+    [Route("api/zona")]
     [ApiController]
-    [Route("api/linea")]
-    public class LineaController : ControllerBase
+    public class ZonaController : ControllerBase
     {
         private readonly IMapper _mapper;
-        private readonly ILineaRepositorio _lRepo;
-        public LineaController(ILineaRepositorio lRepo, IMapper mapper)
+        private readonly IZonaRepositorio _zRepo;
+        public ZonaController(IZonaRepositorio zRepo, IMapper mapper)
         {
-            _lRepo = lRepo;
+            _zRepo = zRepo;
             _mapper = mapper;
         }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public IActionResult GetProductos()
+        public IActionResult GetZonas()
         {
-            var ListaLineas = _lRepo.GetLineas();
-            var ListaLineasDTO = new List<LineaDTO>();
-            foreach (var lista in ListaLineas)
+            var ListaZonas = _zRepo.GetZonas();
+            var ListaZonasDTO = new List<ZonaDTO>();
+            foreach (var lista in ListaZonas)
             {
-                ListaLineasDTO.Add(_mapper.Map<LineaDTO>(lista));
+                ListaZonasDTO.Add(_mapper.Map<ZonaDTO>(lista));
             }
-            return Ok(ListaLineasDTO);
+            return Ok(ListaZonasDTO);
         }
-        [HttpGet("{IdLinea:int}", Name = "GetLinea")]
+        [HttpGet("{IdZona:int}", Name = "GetZona")]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult GetLinea(int IdLinea)
+        public IActionResult GetZona(int IdZona)
         {
-            var itemLinea = _lRepo.GetLinea(IdLinea);
-            if (itemLinea == null)
+            var itemZona = _zRepo.GetZona(IdZona);
+            if (itemZona == null)
             {
                 return NotFound();
             }
-            var itemLineaDTO = _mapper.Map<LineaDTO>(itemLinea);
-            return Ok(itemLineaDTO);
-        }  
+            var itemZonaDTO = _mapper.Map<ZonaDTO>(itemZona);
+            return Ok(itemZonaDTO);
+        }
         [HttpPost]
         [ProducesResponseType(201, Type = typeof(LineaDTO))]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult CrearLinea([FromBody] LineaDTO lineaDTO)
+        public IActionResult CrearZona([FromBody] ZonaDTO zonaDTO)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (lineaDTO == null)
+            if (zonaDTO == null)
             {
                 return BadRequest(ModelState);
             }
-            if (_lRepo.ExisteLinea(lineaDTO.Nombre))
+            if (_zRepo.ExisteZona(zonaDTO.Nombre))
             {
-                ModelState.AddModelError("", "El producto ya existe");
+                ModelState.AddModelError("", "La zona ya existe");
                 return BadRequest(ModelState);
             }
-            var linea = _mapper.Map<Linea>(lineaDTO);
-            if (!_lRepo.CrearLinea(linea))
+            var zona = _mapper.Map<Zona>(zonaDTO);
+            if (!_zRepo.CrearZona(zona))
             {
-                ModelState.AddModelError("", $"Algo salió mal guardando el registro {linea.Nombre}");
+                ModelState.AddModelError("", $"Algo salió mal guardando el registro {zona.Nombre}");
                 return StatusCode(500, ModelState);
             }
-            var lineaCreadaDTO = _mapper.Map<LineaDTO>(linea);
-            return CreatedAtRoute("GetLinea", new { IdLinea = linea.IdLinea }, lineaCreadaDTO);
+            var zonaCreadaDTO = _mapper.Map<ZonaDTO>(zona);
+            return CreatedAtRoute("GetZona", new { IdZona = zona.IdZona }, zonaCreadaDTO);
         }
-        [HttpPatch("{idLinea:int}", Name = "ActualizarLinea")]
+        [HttpPatch("{idZona:int}", Name = "ActualizarZona")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-
-        public IActionResult ActualizarLinea(int idLinea, [FromBody] LineaDTO lineaDTO)
+        public IActionResult ActualizarZona(int idZona, [FromBody] ZonaDTO zonaDTO)
         {
-            if (!ModelState.IsValid || lineaDTO == null || lineaDTO.IdLinea != idLinea)
+            if (!ModelState.IsValid || zonaDTO == null || zonaDTO.IdZona != idZona)
             {
                 return BadRequest(ModelState);
             }
-            var linea = _mapper.Map<Linea>(lineaDTO);
-            if (!_lRepo.ActualizarLinea(linea))
+
+            var zona = _mapper.Map<Zona>(zonaDTO);
+
+            if (!_zRepo.ActualizarZona(zona))
             {
-                ModelState.AddModelError("", $"Algo salió mal guardando el registro {linea.Nombre}");
+                ModelState.AddModelError("", $"Algo salió mal guardando el registro {zona.Nombre}");
                 return StatusCode(StatusCodes.Status500InternalServerError, ModelState);
             }
+
             return NoContent();
         }
-        [HttpDelete("{idLinea:int}", Name = "BorrarLinea")]
+        [HttpDelete("{idZona:int}", Name = "BorrarZona")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult BorrarLinea(int idLinea)
+        public IActionResult BorrarLinea(int idZona)
         {
-            if (!_lRepo.ExisteLinea(idLinea))
+            if (!_zRepo.ExisteZona(idZona))
             {
                 return NotFound();
             }
-            var linea = _lRepo.GetLinea(idLinea);
-            if (!_lRepo.BorrarLinea(linea))
+            var zona = _zRepo.GetZona(idZona);
+            if (!_zRepo.BorrarZonar(zona))
             {
-                ModelState.AddModelError("", $"Algo salió mal borrando el registro {linea.Nombre}");
+                ModelState.AddModelError("", $"Algo salió mal borrando el registro {zona.Nombre}");
                 return StatusCode(StatusCodes.Status500InternalServerError, ModelState);
             }
             return NoContent();
