@@ -12,6 +12,7 @@ namespace ApiGestionAgua.Repositorio.IRepositorio
         bool ExisteProducto(string Nombre);
 
         bool ExisteProducto(int IdProducto);
+
         bool CrearProducto(Producto producto);
 
         bool ActualizarProducto(Producto producto);
