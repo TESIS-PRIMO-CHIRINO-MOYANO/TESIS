@@ -31,6 +31,15 @@ builder.Services.AddScoped<ICuentaRepositorio, CuentaCorrienteRepositorio>();
 //Agreganos el AutoMapper
 builder.Services.AddAutoMapper(typeof(AguaMapper));
 
+//Agrego CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
