@@ -10,9 +10,6 @@ namespace ApiGestionAgua.Modelos
         public int IdCliente { get; set; }
 
         [Required]
-        public string Barrio { get; set; }
-
-        [Required]
         public string Calle { get; set; }
 
         [Required]
@@ -35,6 +32,12 @@ namespace ApiGestionAgua.Modelos
 
         [ForeignKey("IdCuenta")]
         public CuentaCorriente CuentaCorriente { get; set; }
+
+        
+        public int IdBarrio { get; set; }
+
+        [ForeignKey("IdBarrio")]
+        public Barrio barrio { get; set; }
 
     }
 }
