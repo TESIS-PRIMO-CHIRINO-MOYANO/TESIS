@@ -35,7 +35,7 @@ builder.Services.AddAutoMapper(typeof(AguaMapper));
 
 //Agrego CORS
 builder.Services.AddCors(p => p.AddPolicy(
-    "PolicyCors", builder =>
+    "AngularCors", builder =>
     {
         builder.WithOrigins("http://localhost:4200")
         .AllowAnyMethod()
@@ -52,7 +52,7 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
-app.UseCors("PolicyCors");
+app.UseCors("AngularCors");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
