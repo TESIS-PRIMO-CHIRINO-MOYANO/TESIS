@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using ApiGestionAgua.Modelos;
 using ApiGestionAgua.Modelos.Dtos;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Cors;
 
 namespace ApiGestionAgua.Controllers
 {
+ 
     [ApiController]
 
     //[Route("api/[controller]")]// otra opcion
