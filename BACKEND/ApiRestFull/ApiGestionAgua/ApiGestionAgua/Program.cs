@@ -30,16 +30,19 @@ builder.Services.AddScoped<ICuentaRepositorio, CuentaCorrienteRepositorio>();
 
 //Agreganos el AutoMapper
 builder.Services.AddAutoMapper(typeof(AguaMapper));
+;
+//Agrego CORS
 
 //Agrego CORS
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
+builder.Services.AddCors(p => p.AddPolicy(
+    "PolicyCors", builder =>
     {
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-    });
-});
-
+        builder.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    }
+    
+    ));
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -47,7 +50,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 var app = builder.Build();
+app.UseCors("PolicyCors");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

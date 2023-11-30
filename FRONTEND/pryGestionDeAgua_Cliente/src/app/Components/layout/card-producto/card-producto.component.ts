@@ -55,6 +55,6 @@ export class CardProductoComponent {
     this.mensajeAgregado = true;
     setTimeout(() => {
       this.mensajeAgregado = false;
-    }, 3000); // 3000 milisegundos (3 segundos)
+    }, 1000); // 3000 milisegundos (3 segundos)
   }
 }

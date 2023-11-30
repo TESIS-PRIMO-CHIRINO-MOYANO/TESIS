@@ -11,6 +11,8 @@ namespace ApiGestionAgua.Modelos.Dtos
 
         [Required(ErrorMessage ="El nombre es obligatorio.")]
         public string Nombre { get; set; }
+        [Required]
+        public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "El numero de Stock es obligatorio.")]
         public int Stock { get; set; }
