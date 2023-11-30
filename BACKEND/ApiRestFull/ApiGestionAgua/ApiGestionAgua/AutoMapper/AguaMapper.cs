@@ -22,6 +22,7 @@ namespace ApiGestionAgua.AutoMapper
             CreateMap<MedioPago, MedioPagoDTO>().ReverseMap();
             CreateMap<Rol, RolDTO>().ReverseMap();
             CreateMap<CuentaCorriente, CuentaCorrienteDTO>().ReverseMap();
+            CreateMap<Compra, CompraDTO>().ReverseMap();
 
         }
 
