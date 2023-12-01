@@ -32,24 +32,10 @@ namespace ApiGestionAgua.Data
         public DbSet<Compra> Compra { get; set; }
 
         public DbSet<Rol> Rol { get; set; }
-        public DbSet<Modulo> Modulo { get; set; }
-        public DbSet<RolModulo> RolModulo { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //relaciones de la tabla rol modulo
-            modelBuilder.Entity<RolModulo>()
-                .HasKey(tr => new { tr.IdRol, tr.IdModulo });
-
-            modelBuilder.Entity<RolModulo>()
-                .HasOne(tr => tr.Rol)
-                .WithMany()
-                .HasForeignKey(tr => tr.IdRol);
-
-            modelBuilder.Entity<RolModulo>()
-                .HasOne(tr => tr.Modulo)
-                .WithMany()
-                .HasForeignKey(tr => tr.IdModulo);
 
 
             //realciones de la tabla producto pedido

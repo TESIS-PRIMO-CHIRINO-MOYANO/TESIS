@@ -13,10 +13,6 @@ namespace ApiGestionAgua.Modelos
         [Column(TypeName = "decimal(11,2)")]
         public decimal Monto { get; set; }
 
-        public int IdPago { get; set; }
-
-        [ForeignKey("IdPago")]
-        public Pago Pago { get; set; }
 
     }
 }

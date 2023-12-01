@@ -21,5 +21,10 @@ namespace ApiGestionAgua.Modelos
         [ForeignKey("IdMedioPago")]
         public MedioPago MedioPago { get; set; }
 
+        public int IdCuenta { get; set; }
+
+        [ForeignKey("IdCuenta")]
+        public CuentaCorriente cuentaCorriente { get; set; }
+
     }
 }
