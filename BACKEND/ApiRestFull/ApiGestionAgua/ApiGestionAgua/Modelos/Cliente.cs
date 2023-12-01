@@ -27,12 +27,6 @@ namespace ApiGestionAgua.Modelos
         [ForeignKey("IdUsuario")]
         public Usuario Usuario { get; set; }
 
-       
-        public int IdCuenta { get; set; }
-
-        [ForeignKey("IdCuenta")]
-        public CuentaCorriente CuentaCorriente { get; set; }
-
         
         public int IdBarrio { get; set; }
 
