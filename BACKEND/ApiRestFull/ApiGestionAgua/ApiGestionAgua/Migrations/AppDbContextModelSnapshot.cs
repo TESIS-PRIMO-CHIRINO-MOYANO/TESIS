@@ -66,9 +66,6 @@ namespace ApiGestionAgua.Migrations
                     b.Property<int>("IdBarrio")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdCuenta")
-                        .HasColumnType("int");
-
                     b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
@@ -83,8 +80,6 @@ namespace ApiGestionAgua.Migrations
                     b.HasKey("IdCliente");
 
                     b.HasIndex("IdBarrio");
-
-                    b.HasIndex("IdCuenta");
 
                     b.HasIndex("IdUsuario");
 
@@ -137,10 +132,15 @@ namespace ApiGestionAgua.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdCuenta"));
 
+                    b.Property<int>("IdCliente")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Monto")
                         .HasColumnType("decimal(11,2)");
 
                     b.HasKey("IdCuenta");
+
+                    b.HasIndex("IdCliente");
 
                     b.ToTable("CuentaCorriente");
                 });
@@ -398,8 +398,15 @@ namespace ApiGestionAgua.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("FechaNacimiento")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("IdRol")
                         .HasColumnType("int");
+
+                    b.Property<string>("Mail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -469,19 +476,11 @@ namespace ApiGestionAgua.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApiGestionAgua.Modelos.CuentaCorriente", "CuentaCorriente")
-                        .WithMany()
-                        .HasForeignKey("IdCuenta")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ApiGestionAgua.Modelos.Usuario", "Usuario")
                         .WithMany()
                         .HasForeignKey("IdUsuario")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("CuentaCorriente");
 
                     b.Navigation("Usuario");
 
@@ -513,6 +512,17 @@ namespace ApiGestionAgua.Migrations
                     b.Navigation("Proveedor");
 
                     b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("ApiGestionAgua.Modelos.CuentaCorriente", b =>
+                {
+                    b.HasOne("ApiGestionAgua.Modelos.Cliente", "cliente")
+                        .WithMany()
+                        .HasForeignKey("IdCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("cliente");
                 });
 
             modelBuilder.Entity("ApiGestionAgua.Modelos.Pago", b =>

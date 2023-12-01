@@ -18,6 +18,12 @@ namespace ApiGestionAgua.Modelos
         [Required]
         public String Apellido { get; set; }
 
+        [Required]
+        public String Mail { get; set; }
+
+        [Required]
+        public DateTime FechaNacimiento { get; set; }
+
         public int IdRol { get; set; }
 
         [ForeignKey("IdRol")]
