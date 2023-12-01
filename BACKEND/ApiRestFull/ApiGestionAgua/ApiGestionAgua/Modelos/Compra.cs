@@ -17,7 +17,7 @@ namespace ApiGestionAgua.Modelos
         public decimal ImporteTotal { get; set; }
 
         [Required]
-        public DateTime Fecha { get; set; }
+        public DateTime? Fecha { get; set; }
 
         public int IdUsuario { get; set; }
 
