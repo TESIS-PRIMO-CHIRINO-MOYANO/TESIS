@@ -1,0 +1,9 @@
+.centrar{
+    display: block;
+    margin: 0 auto;
+}
+.title1 h1{
+    text-align: center;
+    padding: 35px 0;
+    font-size: 42px;
+}

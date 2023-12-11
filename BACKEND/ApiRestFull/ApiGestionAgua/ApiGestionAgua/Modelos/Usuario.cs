@@ -10,19 +10,22 @@ namespace ApiGestionAgua.Modelos
         public int IdUsuario { get; set; }
 
         [Required]
-        public String Dni { get; set; }
+        public string Dni { get; set; }
 
         [Required]
-        public String Nombre { get; set; }
+        public string Nombre { get; set; }
 
         [Required]
-        public String Apellido { get; set; }
+        public string Apellido { get; set; }
 
         [Required]
-        public String Mail { get; set; }
+        public string Mail { get; set; }
 
         [Required]
         public DateTime FechaNacimiento { get; set; }
+
+        [Required]
+        public DateTime FechaAlta { get; set; }
 
         public int IdRol { get; set; }
 
