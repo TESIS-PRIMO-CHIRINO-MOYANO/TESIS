@@ -398,6 +398,9 @@ namespace ApiGestionAgua.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("FechaAlta")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("FechaNacimiento")
                         .HasColumnType("datetime2");
 
