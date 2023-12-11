@@ -10,6 +10,7 @@ import { RegistroComponent } from './Pages/registro/registro.component';
 
 import { CarritoComponent } from './Pages/pedidos/carrito/carrito.component';
 import { ConsultarCuentaComponent } from './Pages/pedidos/consultar-cuenta/consultar-cuenta.component';
+import { DetallePedidoComponent } from './Pages/detalle-pedido/detalle-pedido.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
       {path:'sobreNosotros',component: SobreNosotrosComponent},
       {path:'carrito',component:CarritoComponent},
       {path:'consultarCuenta',component:ConsultarCuentaComponent},
+      {path:'detallePedido',component:DetallePedidoComponent},
       
       {path:'login', component: LoginComponent},
       {path:'registro', component:RegistroComponent}

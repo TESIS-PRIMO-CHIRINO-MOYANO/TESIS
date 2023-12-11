@@ -3403,19 +3403,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\felip\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\GIT-Tesis\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
+      "projectUniqueName": "C:\\Users\\felip\\OneDrive\\Escritorio\\REPOSITORIOS\\TESIS\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
       "projectName": "ApiGestionAgua",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\GIT-Tesis\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Desktop\\GIT-Tesis\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\obj\\",
+      "projectPath": "C:\\Users\\felip\\OneDrive\\Escritorio\\REPOSITORIOS\\TESIS\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
+      "packagesPath": "C:\\Users\\felip\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\felip\\OneDrive\\Escritorio\\REPOSITORIOS\\TESIS\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\felip\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
