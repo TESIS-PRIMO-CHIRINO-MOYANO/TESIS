@@ -18,8 +18,14 @@ namespace ApiGestionAgua.Modelos.Dtos
         [Required(ErrorMessage = "El mail es obligatorio.")]
         public string Mail { get; set; }
 
+        [Required(ErrorMessage = "La Contraseña es obligatoria.")]
+        public string Password { get; set; }
+
         [Required(ErrorMessage = "La fecha de nacimiento es obligatoria.")]
         public DateTime? FechaNacimiento { get; set; }
+
+        [Required(ErrorMessage = "El IdRol es obligatorio.")]
+        public int IdRol { get; set; }
 
         [Required(ErrorMessage = "La calle es obligatoria.")]
         public string Calle { get; set; }
