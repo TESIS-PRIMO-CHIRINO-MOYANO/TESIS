@@ -22,6 +22,9 @@ namespace ApiGestionAgua.Modelos
         public string Mail { get; set; }
 
         [Required]
+        public string Password { get; set; }
+
+        [Required]
         public DateTime FechaNacimiento { get; set; }
 
         [Required]
