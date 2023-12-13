@@ -39,6 +39,9 @@ namespace ApiGestionAgua.Modelos.Dtos
         [Required(ErrorMessage = "El telefono es obligatorio.")]
         public string Telefono { get; set; }
 
+        [Required(ErrorMessage = "El IdBarrio es obligatorio.")]
+        public int IdBarrio { get; set; }
+
 
     }
 }

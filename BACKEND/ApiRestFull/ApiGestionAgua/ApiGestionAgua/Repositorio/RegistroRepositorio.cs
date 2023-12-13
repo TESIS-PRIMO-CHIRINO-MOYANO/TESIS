@@ -36,7 +36,8 @@ namespace ApiGestionAgua.Repositorio
                 IdRol = registroClienteDTO.IdRol,
                 FechaNacimiento = (DateTime) registroClienteDTO.FechaNacimiento,
                 Mail = registroClienteDTO.Mail,
-                FechaAlta = DateTime.Now
+                FechaAlta = DateTime.Now,
+                Password = registroClienteDTO.Password
             };
 
             _bd.Usuario.Add(usuario);
@@ -44,14 +45,64 @@ namespace ApiGestionAgua.Repositorio
 
         }
 
-        public bool Guardar()
+        public bool CrearCliente(RegistroClienteDTO registroClienteDTO)
         {
-            return _bd.SaveChanges() >= 0 ? true : false;
+            var usuario = GetUsuario(registroClienteDTO.Dni);
+
+            var cliente = new Cliente
+            {
+                Calle = registroClienteDTO.Calle,
+                Piso = registroClienteDTO.Piso,
+                Depto = registroClienteDTO.Depto,
+                Telefono = registroClienteDTO.Telefono,
+                IdUsuario = usuario.IdUsuario,
+                IdBarrio = registroClienteDTO.IdBarrio
+            };
+
+            _bd.Cliente.Add(cliente);
+            return Guardar();
+        }
+
+        public bool CrearCuenta(RegistroClienteDTO registroClienteDTO)
+        {
+            var usuario = GetUsuario(registroClienteDTO.Dni);
+            var cliente = GetCliente(usuario.IdUsuario);
+
+
+            var Cuenta = new CuentaCorriente
+            {
+                Monto = 0,
+                IdCliente = cliente.IdCliente
+                
+            };
+
+            _bd.CuentaCorriente.Add(Cuenta);
+            return Guardar();
         }
 
         public Usuario GetUsuario(string Dni)
         {
             return _bd.Usuario.FirstOrDefault(u => u.Dni == Dni);
         }
+
+
+        public Cliente GetCliente(int IdUsuario)
+        {
+            return _bd.Cliente.FirstOrDefault(c => c.IdUsuario == IdUsuario);
+        }
+
+        public CuentaCorriente GetCuenta(int IdCliente)
+        {
+            return _bd.CuentaCorriente.FirstOrDefault(c => c.IdCliente == IdCliente);
+        }
+
+        public bool Guardar()
+        {
+            return _bd.SaveChanges() >= 0 ? true : false;
+        }
+
+        
+
+        
     }
 }

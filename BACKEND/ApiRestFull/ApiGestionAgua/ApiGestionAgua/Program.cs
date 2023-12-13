@@ -28,6 +28,7 @@ builder.Services.AddScoped<IMedioPagoRepositorio, MedioPagoRepositorio>();
 builder.Services.AddScoped<IRolRepositorio, RolRepositorio>();
 builder.Services.AddScoped<ICuentaRepositorio, CuentaCorrienteRepositorio>();
 builder.Services.AddScoped<ICompraRepositorio, CompraRepositorio>();
+builder.Services.AddScoped<IRegistroRepositorio, RegistroRepositorio>();
 
 //Agreganos el AutoMapper
 builder.Services.AddAutoMapper(typeof(AguaMapper));
