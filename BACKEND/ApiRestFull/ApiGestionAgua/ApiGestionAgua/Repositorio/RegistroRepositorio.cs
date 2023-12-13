@@ -26,25 +26,6 @@ namespace ApiGestionAgua.Repositorio
             return valor;
         }
 
-        public bool CrearUsuario(RegistroClienteDTO registroClienteDTO)
-        {
-            var usuario = new Usuario
-            {
-                Dni = registroClienteDTO.Dni,
-                Nombre = registroClienteDTO.Nombre,
-                Apellido = registroClienteDTO.Apellido,
-                IdRol = registroClienteDTO.IdRol,
-                FechaNacimiento = (DateTime) registroClienteDTO.FechaNacimiento,
-                Mail = registroClienteDTO.Mail,
-                FechaAlta = DateTime.Now,
-                Password = registroClienteDTO.Password
-            };
-
-            _bd.Usuario.Add(usuario);
-            return Guardar();
-
-        }
-
         public bool CrearCliente(RegistroClienteDTO registroClienteDTO)
         {
             var usuario = GetUsuario(registroClienteDTO.Dni);
@@ -101,8 +82,41 @@ namespace ApiGestionAgua.Repositorio
             return _bd.SaveChanges() >= 0 ? true : false;
         }
 
+        public async Task<Usuario> CrearUsuario(RegistroClienteDTO registroClienteDTO) 
+        {
         
+            var passwordEncriptado = obtenermd5(registroClienteDTO.Password);
 
+            Usuario usuario = new Usuario()
+            {
+                Dni = registroClienteDTO.Dni,
+                Nombre = registroClienteDTO.Nombre,
+                Apellido = registroClienteDTO.Apellido,
+                IdRol = registroClienteDTO.IdRol,
+                FechaNacimiento = (DateTime)registroClienteDTO.FechaNacimiento,
+                Mail = registroClienteDTO.Mail,
+                FechaAlta = DateTime.Now,
+                Password = passwordEncriptado
+            };
+
+            _bd.Usuario.Add(usuario);
+            await _bd.SaveChangesAsync();
+            return usuario;
         
+        }
+
+        //Método para encriptar contraseña con MD5 se usa tanto en el Acceso como en el Registro
+        public static string obtenermd5(string valor)
+        {
+            MD5CryptoServiceProvider x = new MD5CryptoServiceProvider();
+            byte[] data = System.Text.Encoding.UTF8.GetBytes(valor);
+            data = x.ComputeHash(data);
+            string resp = "";
+            for (int i = 0; i < data.Length; i++)
+                resp += data[i].ToString("x2").ToLower();
+            return resp;
+        }
+
+
     }
 }
