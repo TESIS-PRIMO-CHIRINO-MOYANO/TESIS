@@ -7,9 +7,12 @@ namespace ApiGestionAgua.Repositorio.IRepositorio
     {
 
         Usuario GetUsuario(string Dni);
+        Cliente GetCliente(int IdUsuario);
+        CuentaCorriente GetCuenta(int IdCliente);
         bool ExisteUsuario(string Mail, string Dni);
         bool CrearUsuario(RegistroClienteDTO registroClienteDTO);
-
+        bool CrearCliente(RegistroClienteDTO registroClienteDTO);
+        bool CrearCuenta(RegistroClienteDTO registroClienteDTO);
         bool Guardar();
 
     }
