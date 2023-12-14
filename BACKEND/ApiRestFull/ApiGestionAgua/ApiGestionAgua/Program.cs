@@ -38,7 +38,7 @@ builder.Services.AddAutoMapper(typeof(AguaMapper));
 builder.Services.AddCors(p => p.AddPolicy(
     "AngularCors", builder =>
     {
-        builder.WithOrigins("http://localhost:4200")
+        builder.AllowAnyOrigin()
         .AllowAnyMethod()
         .AllowAnyHeader();
     }
