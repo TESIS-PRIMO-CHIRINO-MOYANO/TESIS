@@ -33,8 +33,8 @@
                             <div class="form-outline mb-4 text-start">
                                 <label class="form-label" for="sexo">Sexo</label>
                                 <select formControlName="sexo" class="form-select" id="sexo">
-                                    
-                                    <option value="Masculino">Masculino</option>
+                                    <option value="" disabled selected hidden>Seleccione un sexo</option>
+                                    <option value="Masculino" >Masculino</option>
                                     <option value="Femenino">Femenino</option>
                                     <option value="Otro">Otro</option>
                                 </select>
@@ -60,11 +60,10 @@
                             <div class="form-outline mb-4 text-start">
                                 <label class="form-label" for="barrio">Barrio</label>
                                 <select formControlName="barrio"  id="barrio" class="form-select form-control-lg" >
-                                    <option value="0">Alto alberdi</option>
-                                    <option value="0">General Paz</option>
-                                    <option value="0">Nueva Cordoba</option>
-                                    <option value="0">Alta Cordoba</option>
-                                    <option value="0">Maipu</option>
+                                    <option value="" disabled selected hidden>Seleccione un barrio</option>
+                                    <option *ngFor="let barrio of barrios "  [value]="barrio.idBarrio" [hidden]="!barrio.estado" > <!-- Uso el Hidden en lugar del ngif porque no se puede usar -->
+                                        {{ barrio.nombre }}
+                                    </option>
                                 </select>  
                                 <div *ngIf="barrio.invalid && (barrio.dirty || barrio.touched)" class="text-danger">
                                     <div *ngIf="barrio.errors?.['required']">

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BarrioService } from 'src/app/Services/barrio.service';
+import { BarrioInterface } from 'src/app/Interfaces/barrio';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -12,7 +15,8 @@ export class RegistroComponent {
 
   constructor(
     private fb:FormBuilder,
-    private router:Router
+    private router:Router,
+    private servicioBarrios:BarrioService
   ) {
     this.formularioRegistro=this.fb.group({
       nombre:['',Validators.required],
@@ -27,8 +31,15 @@ export class RegistroComponent {
       email:['',[Validators.required, Validators.email]],
       password:['',[Validators.required, Validators.minLength(8)]]
     });
+
+
     
   }
+  ngOnInit(): void {
+    this.traerBarrios()
+    
+  }
+  //Getters para los campos de los fomularios
   get nombre(){
     return this.formularioRegistro.controls.nombre;
   }
@@ -66,4 +77,13 @@ export class RegistroComponent {
     this.router.navigate(['/pages/productos']);
     //Aca Va el codigo una vez que se tenga la api para registrarse.
   }
+  barrios?:BarrioInterface[];
+  traerBarrios(){
+    this.servicioBarrios.traerBarrios().subscribe((result)=>{
+      this.barrios = result;
+    })
+  }
+
+
+
 }
