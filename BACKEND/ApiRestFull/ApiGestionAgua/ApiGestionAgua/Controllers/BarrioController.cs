@@ -108,7 +108,7 @@ namespace ApiGestionAgua.Controllers
                 ModelState.AddModelError("", $"Algo salió mal guardando el registro {barrio.Nombre}");
                 return StatusCode(500, ModelState);
             }          
-            return NoContent();
+            return Ok();
         }
         [HttpDelete("{IdBarrio:int}", Name = "BorrarBarrio")]
         [ProducesResponseType(201, Type = typeof(VehiculoDTO))]
