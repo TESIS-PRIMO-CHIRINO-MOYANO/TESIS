@@ -21,7 +21,7 @@ namespace ApiGestionAgua.Repositorio
 
         public bool ExisteUsuario(string Mail, string Dni)
         {
-            bool valor = _bd.Usuario.Any(u => (u.Mail.ToLower().Trim() == Mail.ToLower().Trim()) && (u.Dni.ToLower().Trim() == Dni.ToLower().Trim()));
+            bool valor = _bd.Usuario.Any(u => (u.Mail.ToLower().Trim() == Mail.ToLower().Trim()) || (u.Dni.ToLower().Trim() == Dni.ToLower().Trim()));
 
             return valor;
         }
