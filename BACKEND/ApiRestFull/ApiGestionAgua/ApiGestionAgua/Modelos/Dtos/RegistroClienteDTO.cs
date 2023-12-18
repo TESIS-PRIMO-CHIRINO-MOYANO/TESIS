@@ -15,6 +15,9 @@ namespace ApiGestionAgua.Modelos.Dtos
         [Required(ErrorMessage = "El apellido es obligatorio.")]
         public string Apellido { get; set; }
 
+        [Required(ErrorMessage = "El Sexo es obligatorio.")]
+        public string Sexo { get; set; }
+
         [Required(ErrorMessage = "El mail es obligatorio.")]
         public string Mail { get; set; }
 
