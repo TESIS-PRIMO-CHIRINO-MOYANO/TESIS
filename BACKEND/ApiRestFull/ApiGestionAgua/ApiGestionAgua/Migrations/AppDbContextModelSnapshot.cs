@@ -419,6 +419,10 @@ namespace ApiGestionAgua.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Sexo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("IdUsuario");
 
                     b.HasIndex("IdRol");
