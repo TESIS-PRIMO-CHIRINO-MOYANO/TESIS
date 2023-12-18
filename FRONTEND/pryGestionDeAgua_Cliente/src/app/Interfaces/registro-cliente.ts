@@ -11,4 +11,5 @@ export interface RegistroClienteInterface {
     depto?: string;
     telefono?: string;
     idBarrio: number;
+    sexo:string;
 }

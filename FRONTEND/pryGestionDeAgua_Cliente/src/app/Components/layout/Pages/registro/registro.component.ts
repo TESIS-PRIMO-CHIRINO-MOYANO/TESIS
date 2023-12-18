@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { BarrioService } from 'src/app/Services/barrio.service';
 import { BarrioInterface } from 'src/app/Interfaces/barrio';
 import { RegistroClienteInterface } from 'src/app/Interfaces/registro-cliente';
+import { RegistroClienteService } from 'src/app/Services/registro-cliente.service';
+
 
 @Component({
   selector: 'app-registro',
@@ -17,7 +19,8 @@ export class RegistroComponent {
   constructor(
     private fb:FormBuilder,
     private router:Router,
-    private servicioBarrios:BarrioService
+    private servicioBarrios:BarrioService,
+    private servicioRegistroCliente: RegistroClienteService
   ) {
     this.formularioRegistro=this.fb.group({
       dni: ['', Validators.required],
@@ -31,7 +34,8 @@ export class RegistroComponent {
       piso: [''],
       depto: [''],
       telefono: [''],
-      idBarrio: [0, Validators.required],
+      idBarrio: ['', Validators.required],
+      sexo: ['',Validators.required],
     });
 
 
@@ -54,11 +58,11 @@ export class RegistroComponent {
   get dni(){
     return this.formularioRegistro.controls.dni;
   }
-  get barrio(){
-    return this.formularioRegistro.controls.barrio;
+  get idBarrio(){
+    return this.formularioRegistro.controls.idBarrio;
   }
-  get direccion(){
-    return this.formularioRegistro.controls.direccion;
+  get calle(){
+    return this.formularioRegistro.controls.calle;
   }
   get piso(){
     return this.formularioRegistro.controls.piso;
@@ -67,25 +71,46 @@ export class RegistroComponent {
     return this.formularioRegistro.controls.telefono;
   }
   get mail(){
-    return this.formularioRegistro.controls.email;
+    return this.formularioRegistro.controls.mail;
   }
   get pass(){
     return this.formularioRegistro.controls.password;
   }
-  get fecha(){
-    return this.formularioRegistro.controls.fecha;
+  get fechaNacimiento(){
+    return this.formularioRegistro.controls.fechaNacimiento;
   }
-
+  _error?:string= "";
+  _exito?:string= "";
+  onSubmit() {
+    if (this.formularioRegistro.valid) {
+      const registroData: RegistroClienteInterface = this.formularioRegistro.value;
+      registroData.dni = registroData.dni.toString();
+      this.servicioRegistroCliente.registrarUsuario(registroData)
+      .subscribe(
+        (respuesta) => {
+          this._exito ='Registro exitoso, Aguarde y sera redirigido...',
+          setTimeout(() => {
+            
+            this.router.navigate(['/pages/login'])
+          }, 3000);
+         
+        },
+        (error) => {
+          this._error ='Error algo paso intentelo nuevamente...'
+          setTimeout(() => {            
+            this._error =''
+          }, 3000);
+          
+        }
+      );
+    }
+  }
   
-  registrar(){
-    console.log(this.formularioRegistro.value);
-    this.router.navigate(['/pages/productos']);
-    //Aca Va el codigo una vez que se tenga la api para registrarse.
-  }
-  barrios?:BarrioInterface[];
+ 
+  _barrios?:BarrioInterface[];
   traerBarrios(){
     this.servicioBarrios.traerBarrios().subscribe((result)=>{
-      this.barrios = result;
+     this._barrios = result;
     })
   }
 
