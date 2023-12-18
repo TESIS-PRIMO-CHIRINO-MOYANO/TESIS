@@ -93,6 +93,7 @@ namespace ApiGestionAgua.Repositorio
                 Nombre = registroClienteDTO.Nombre,
                 Apellido = registroClienteDTO.Apellido,
                 IdRol = registroClienteDTO.IdRol,
+                Sexo = registroClienteDTO.Sexo,
                 FechaNacimiento = (DateTime)registroClienteDTO.FechaNacimiento,
                 Mail = registroClienteDTO.Mail,
                 FechaAlta = DateTime.Now,

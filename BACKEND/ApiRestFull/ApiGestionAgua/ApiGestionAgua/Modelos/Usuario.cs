@@ -19,6 +19,9 @@ namespace ApiGestionAgua.Modelos
         public string Apellido { get; set; }
 
         [Required]
+        public string Sexo { get; set; }
+
+        [Required]
         public string Mail { get; set; }
 
         [Required]
