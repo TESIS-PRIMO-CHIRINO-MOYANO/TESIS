@@ -34,9 +34,9 @@
                                 <label class="form-label" for="sexo">Sexo</label>
                                 <select formControlName="sexo" class="form-select" id="sexo">
                                     <option value="" disabled selected hidden>Seleccione un sexo</option>
-                                    <option value="Masculino" >Masculino</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="Otro">Otro</option>
+                                    <option value="M" >Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="O">Otro</option>
                                 </select>
                                 <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)" class="text-danger">
                                     <div *ngIf="sexo.errors?.['required']">
@@ -97,29 +97,40 @@
                                 
                             </div>       
                         </div>
-                        <div class="col-12">
+                        <div class="col-sm-6">
                             <div class="form-outline mb-4 text-start">
                                 <label class="form-label" for="piso">Telefono</label>
                                 <input formControlName="telefono" type="text" id="telefono" class="form-control form-control-lg" placeholder="Ejemplo: 351 1564844"/>
                                 <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="text-danger">
-                                    <div *ngIf="barrio.errors?.['required']">
+                                    <div *ngIf="telefono.errors?.['required']">
                                         El telefono es obligatorio...
                                     </div>                                    
                                 </div>
                             </div>    
                                
                         </div>
-                       
+                        <div class="col-sm-6">
+                            <div class="form-outline mb-4 text-start">
+                                <label class="form-label" for="piso">Fecha de nacimiento</label>
+                                <input formControlName="fecha" type="date" id="fecha" class="form-control form-control-lg" placeholder=""/>
+                                <div *ngIf="fecha.invalid && (fecha.dirty || fecha.touched)" class="text-danger">
+                                    <div *ngIf="fecha.errors?.['required']">
+                                        La Fecha de nacimiento es obligatoria...
+                                    </div>                                    
+                                </div>
+                            </div>    
+                               
+                        </div>
                         <div class="col-12">                            
                             <div class="form-outline mb-4 text-start">
                                 <label class="form-label" for="Email">Correo electronico</label>
                                 <input formControlName="email" type="email" id="Email" class="form-control form-control-lg"  placeholder="JuanPerez@mail.com"/>
-                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                                <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="text-danger">
 
-                                    <div *ngIf="email.errors?.['required']">
+                                    <div *ngIf="mail.errors?.['required']">
                                         El correo es obligatorio...
                                     </div>
-                                    <div *ngIf="email.errors?.['email']">
+                                    <div *ngIf="mail.errors?.['email']">
                                         Ingrese un fromato de correo correcto...
                                     </div>
                                 </div>
