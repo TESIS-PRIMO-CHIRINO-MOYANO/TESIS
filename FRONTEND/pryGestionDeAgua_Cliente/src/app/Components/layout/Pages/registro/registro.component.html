@@ -3,7 +3,7 @@
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-8 col-xl-8">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <form class=" row card-body p-5 text-center" [formGroup]="formularioRegistro" (ngSubmit)="registrar()">
+                    <form class=" row card-body p-5 text-center" [formGroup]="formularioRegistro" (ngSubmit)="onSubmit()" >
                         
                         <h3 class="mb-5 ">Cree una cuenta</h3>
                         
@@ -33,15 +33,16 @@
                             <div class="form-outline mb-4 text-start">
                                 <label class="form-label" for="sexo">Sexo</label>
                                 <select formControlName="sexo" class="form-select" id="sexo">
-                                    
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="Otro">Otro</option>
+                                    <option value="" disabled selected hidden>Seleccione un sexo...</option>
+                                    <option value="M" >Masculino</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="O">Otro</option>
                                 </select>
                                 <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)" class="text-danger">
-                                    <div *ngIf="sexo.errors?.['required']">
+                                    <div *ngIf="sexo.errors?.['required']  ">
                                         Debe seleccionar un sexo...
-                                    </div>                                    
+                                    </div> 
+                                                                        
                                 </div>
                             </div>
                         </div>
@@ -58,27 +59,27 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-outline mb-4 text-start">
-                                <label class="form-label" for="barrio">Barrio</label>
-                                <select formControlName="barrio"  id="barrio" class="form-select form-control-lg" >
-                                    <option value="0">Alto alberdi</option>
-                                    <option value="0">General Paz</option>
-                                    <option value="0">Nueva Cordoba</option>
-                                    <option value="0">Alta Cordoba</option>
-                                    <option value="0">Maipu</option>
+                                <label class="form-label" for="idBarrio">Barrio</label>
+                                <select formControlName="idBarrio"  id="idBarrio" class="form-select form-control-lg" >
+                                    <option value="" selected disabled hidden  >Seleccione un barrio...</option>
+                                    <option *ngFor="let barrio of _barrios "  [value]="barrio.idBarrio" [hidden]="!barrio.estado" > <!-- Uso el Hidden en lugar del ngif porque no se puede usar -->
+                                      {{barrio.nombre}}
+                                    </option>
                                 </select>  
-                                <div *ngIf="barrio.invalid && (barrio.dirty || barrio.touched)" class="text-danger">
-                                    <div *ngIf="barrio.errors?.['required']">
+                                <div *ngIf="idBarrio.invalid && (idBarrio.dirty || idBarrio.touched)" class="text-danger">
+                                    <div *ngIf="idBarrio.errors?.['required'] ">
                                         El barrio es obligatorio...
-                                    </div>                                    
+                                    </div>   
+                                                                  
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-outline mb-4 text-start">
-                                <label class="form-label" for="direccion">Direccion</label>
-                                <input formControlName="direccion" type="text" id="direccion" class="form-control form-control-lg" placeholder="Bv. Chacabuco 680"/>
-                                <div *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)" class="text-danger">
-                                    <div *ngIf="direccion.errors?.['required']">
+                                <label class="form-label" for="calle">Calle y altura</label>
+                                <input formControlName="calle" type="text" id="calle" class="form-control form-control-lg" placeholder="Bv. Chacabuco 680"/>
+                                <div *ngIf="calle.invalid && (calle.dirty || calle.touched)" class="text-danger">
+                                    <div *ngIf="calle.errors?.['required']">
                                         La direccion es obligatoria  ...
                                     </div>                                    
                                 </div>
@@ -98,29 +99,40 @@
                                 
                             </div>       
                         </div>
-                        <div class="col-12">
+                        <div class="col-sm-6">
                             <div class="form-outline mb-4 text-start">
                                 <label class="form-label" for="piso">Telefono</label>
                                 <input formControlName="telefono" type="text" id="telefono" class="form-control form-control-lg" placeholder="Ejemplo: 351 1564844"/>
                                 <div *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)" class="text-danger">
-                                    <div *ngIf="barrio.errors?.['required']">
+                                    <div *ngIf="telefono.errors?.['required']">
                                         El telefono es obligatorio...
                                     </div>                                    
                                 </div>
                             </div>    
                                
                         </div>
-                       
+                        <div class="col-sm-6">
+                            <div class="form-outline mb-4 text-start">
+                                <label class="form-label" for="piso">Fecha de nacimiento</label>
+                                <input formControlName="fechaNacimiento" type="date" id="fechaNacimiento" class="form-control form-control-lg" placeholder=""/>
+                                <div *ngIf="fechaNacimiento.invalid && (fechaNacimiento.dirty || fechaNacimiento.touched)" class="text-danger">
+                                    <div *ngIf="fechaNacimiento.errors?.['required']">
+                                        La Fecha de nacimiento es obligatoria...
+                                    </div>                                    
+                                </div>
+                            </div>    
+                               
+                        </div>
                         <div class="col-12">                            
                             <div class="form-outline mb-4 text-start">
-                                <label class="form-label" for="Email">Correo electronico</label>
-                                <input formControlName="email" type="email" id="Email" class="form-control form-control-lg"  placeholder="JuanPerez@mail.com"/>
-                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                                <label class="form-label" for="mail">Correo electronico</label>
+                                <input formControlName="mail" type="email" id="mail" class="form-control form-control-lg"  placeholder="JuanPerez@mail.com"/>
+                                <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="text-danger">
 
-                                    <div *ngIf="email.errors?.['required']">
+                                    <div *ngIf="mail.errors?.['required']">
                                         El correo es obligatorio...
                                     </div>
-                                    <div *ngIf="email.errors?.['email']">
+                                    <div *ngIf="mail.errors?.['email']">
                                         Ingrese un fromato de correo correcto...
                                     </div>
                                 </div>
@@ -146,7 +158,13 @@
                         <div class="d-grid gap-2">
                             <button [disabled]="formularioRegistro.invalid"  class="btn btn-primary" type="submit">Crear una cuenta</button>
                         </div>  
-                        <p class="text-center mt-3">¿Ya tiene una cuenta? <a routerLink="/pages/login">Inicie sesión</a></p>                    
+                        <p class="text-center mt-3">¿Ya tiene una cuenta? <a routerLink="/pages/login">Inicie sesión</a></p>
+                        <div class="alert alert-danger" role="alert" *ngIf="_error?.length != 0 ">
+                            {{_error}}
+                        </div>      
+                        <div class="alert alert-success" role="alert" *ngIf="_exito?.length != 0 ">
+                            {{_exito}}
+                        </div>               
                     </form>
                 </div>
             </div>

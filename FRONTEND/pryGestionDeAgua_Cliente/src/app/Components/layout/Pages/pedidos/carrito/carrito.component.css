@@ -2,27 +2,9 @@
     display: block;
     margin: 0 auto;
 }
-/*
+
 .title1 h1{
     text-align: center;
-    padding-top: 50px;
+    padding: 35px 0;
     font-size: 42px;
 }
-.table__productos{
-    display: flex;
-}
-.table__productos > img{
-    width: 9rem;
-    object-fit: contain;
-    border-radius: 6px;
-    margin-right: 20px;
-}
-.table__cantidad > input{
-    width: 40px;
-    border: none;
-    outline: 0;
-    font-size: 16px;
-    font-weight: 700;
-    margin-right: 30px;
-    margin-bottom: 20px;
-} */

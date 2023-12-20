@@ -16,6 +16,7 @@ import { SharedModule } from './Reutilizable/shared/shared.module';
     AppComponent,
     LayoutComponent
   ],
+    
   imports: [
     BrowserModule,
     AppRoutingModule,

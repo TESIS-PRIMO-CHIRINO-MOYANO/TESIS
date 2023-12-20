@@ -6,7 +6,8 @@
             <h4 class="card-title text-center ">{{producto.nombre}}</h4>
             <p class="card-text">{{producto.descripcion | slice:0:80 }}...</p>
             <div class="d-flex justify-content-between">
-                <span class="badge text-color1 p-2 mt-3">{{producto.linea}}</span>
+                <span class="badge text-color1 p-2 mt-3" *ngIf="producto.idLinea == 1">Retornable</span>
+                <span class="badge text-color1 p-2 mt-3" *ngIf="producto.idLinea == 2">Descartable</span>
                 <span class="badge text-color2 p-2 mt-3">Precio: ${{producto.precio}}</span>
             </div>
         </div>
@@ -49,6 +50,11 @@
 
             <button type="button" class="w-100 btn btn-color btn-outline-primary p-1 my-3" (click)="agregarAlCarrito(producto.idProducto, producto.nombre, valorNumeric, producto.precio, producto.urlImagen)"><i
                     class="bi bi-cart-plus mx-2"></i>Agregar al carrito</button>
+
+                    <div class="d-grid gap-2" *ngIf="mensajeAgregado">
+                        
+                        <span class="badge  bg-success  tamaño-mensaje">Producto Agregado con exito</span>
+                      </div>
         </div>
 
     </div>

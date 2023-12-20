@@ -48,7 +48,13 @@ export class CardProductoComponent {
 
     // Almacenar el carrito actualizado en el Local Storage
     localStorage.setItem('carrito', JSON.stringify(carritoActual));
+    this.mostrarMensajeAgregado()
   }
-
-  
+  mensajeAgregado:boolean = false;
+  mostrarMensajeAgregado() {
+    this.mensajeAgregado = true;
+    setTimeout(() => {
+      this.mensajeAgregado = false;
+    }, 1000); // 3000 milisegundos (3 segundos)
+  }
 }

@@ -15,7 +15,7 @@ export class ProductosComponent implements OnInit{
   ){}
   ngOnInit(): void {
     this.servicioProductos.traerProductos().subscribe((result)=>{
-      console.log(this.productos = result)
+      this.productos = result
     })
   }
 

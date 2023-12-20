@@ -1,14 +1,65 @@
-.centrar{
+.centrar {
     display: block;
     margin: 0 auto;
 }
-.title h1{
+
+.title1 h1{
     text-align: center;
-    align-items: center;
+    padding: 35px 0;
+    font-size: 42px;
 }
 
-.card{
-    height: 400px; 
-    min-width: 290px;
-    max-width: 290px;
+
+
+
+.tarjeta {
+    min-height: 140px;
+    min-width: 200px;
+    box-shadow: 11px 15px 17px 1px rgba(0,0,0,0.27);
+-webkit-box-shadow: 11px 15px 17px 1px rgba(0,0,0,0.27);
+-moz-box-shadow: 11px 15px 17px 1px rgba(0,0,0,0.27);
+}
+
+h3{
+    font-size: 30px;
+}
+p{
+    font-size: 22px;
+}
+
+/*.col-tar-1{
+    background: rgb(31, 111, 149) ;
+  
+}
+
+.col-tar-2{
+    background: rgb(31, 111, 149) ;
+}
+.col-tar-3{
+    background: rgb(31, 111, 149) ;
+}
+.col-tar-4{
+    background: rgb(31, 111, 149) ;
+}
+.col-tar-5{
+    background: rgb(31, 111, 149) ;
+}
+*/
+
+.col-tar-1{
+    background: #3e8ba5;
+  
+}
+
+.col-tar-2{
+    background:  #3e8ba5;
+}
+.col-tar-3{
+    background: #3e8ba5;
+}
+.col-tar-4{
+    background: #3e8ba5;
+}
+.col-tar-5{
+    background:#3e8ba5;;
 }
