@@ -92,8 +92,7 @@ export class RegistroComponent {
           setTimeout(() => {
             
             this.router.navigate(['/pages/login'])
-          }, 3000);
-         
+          }, 3000);        
         },
         (error) => {
           this._error ='Error algo paso intentelo nuevamente...'
@@ -105,15 +104,10 @@ export class RegistroComponent {
       );
     }
   }
-  
- 
   _barrios?:BarrioInterface[];
   traerBarrios(){
     this.servicioBarrios.traerBarrios().subscribe((result)=>{
      this._barrios = result;
     })
   }
-
-
-
 }
