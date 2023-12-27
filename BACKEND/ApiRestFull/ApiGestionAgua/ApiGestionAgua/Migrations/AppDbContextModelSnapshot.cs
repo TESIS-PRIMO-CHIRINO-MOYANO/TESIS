@@ -254,8 +254,11 @@ namespace ApiGestionAgua.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPedido"));
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<DateTime>("FechaPedido")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("IdBarrio")
+                        .HasColumnType("int");
 
                     b.Property<int>("IdCliente")
                         .HasColumnType("int");
@@ -263,10 +266,7 @@ namespace ApiGestionAgua.Migrations
                     b.Property<int>("IdEstado")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPatente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdZona")
+                    b.Property<int?>("IdPatente")
                         .HasColumnType("int");
 
                     b.Property<decimal>("ImporteTotal")
@@ -274,13 +274,13 @@ namespace ApiGestionAgua.Migrations
 
                     b.HasKey("IdPedido");
 
+                    b.HasIndex("IdBarrio");
+
                     b.HasIndex("IdCliente");
 
                     b.HasIndex("IdEstado");
 
                     b.HasIndex("IdPatente");
-
-                    b.HasIndex("IdZona");
 
                     b.ToTable("Pedido");
                 });
@@ -557,6 +557,12 @@ namespace ApiGestionAgua.Migrations
 
             modelBuilder.Entity("ApiGestionAgua.Modelos.Pedido", b =>
                 {
+                    b.HasOne("ApiGestionAgua.Modelos.Barrio", "Barrio")
+                        .WithMany()
+                        .HasForeignKey("IdBarrio")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ApiGestionAgua.Modelos.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("IdCliente")
@@ -571,23 +577,15 @@ namespace ApiGestionAgua.Migrations
 
                     b.HasOne("ApiGestionAgua.Modelos.Vehiculo", "Vehiculo")
                         .WithMany()
-                        .HasForeignKey("IdPatente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdPatente");
 
-                    b.HasOne("ApiGestionAgua.Modelos.Zona", "Zona")
-                        .WithMany()
-                        .HasForeignKey("IdZona")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Barrio");
 
                     b.Navigation("Cliente");
 
                     b.Navigation("Estado");
 
                     b.Navigation("Vehiculo");
-
-                    b.Navigation("Zona");
                 });
 
             modelBuilder.Entity("ApiGestionAgua.Modelos.Producto", b =>

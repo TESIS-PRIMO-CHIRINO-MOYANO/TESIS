@@ -62,3 +62,6 @@ bld/
 *.ndf
 
 BACKEND/ApiRestFull/ApiGestionAgua/ApiGestionAgua/bin/Debug/net7.0/ApiGestionAgua.dll
+BACKEND/ApiRestFull/ApiGestionAgua/.vs/ApiGestionAgua/v17/.futdcache.v2
+BACKEND/ApiRestFull/ApiGestionAgua/.vs/ApiGestionAgua/v17/.futdcache.v2
+BACKEND/ApiRestFull/ApiGestionAgua/.vs/ApiGestionAgua/v17/.suo

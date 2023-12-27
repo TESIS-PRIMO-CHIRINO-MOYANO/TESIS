@@ -3,42 +3,73 @@ import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Login } from 'src/app/Interfaces/login';
 import { Router } from '@angular/router';
+import { CredencialesLogin } from 'src/app/Interfaces/credenciales-login';
+import { AuthService } from 'src/app/Services/auth.service';
+
 @Component({
-  
+
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-    
+
 })
 export class LoginComponent {
-  formularioLogin:FormGroup;
-  
-  ocultarPassword:boolean=true;
-  error?:string ="";
-  constructor(private fb:FormBuilder,
- 
-   private router:Router
-    ) {
-    
+  formularioLogin: FormGroup;
+
+  ocultarPassword: boolean = true;
+  error?: string = "";
+  constructor(private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+
+  ) {
+
     this.formularioLogin = this.fb.group({
-      email:['eve.holt@reqres.in',[Validators.required, Validators.email]],
-      password:['cityslicka',[Validators.required, Validators.minLength(8)]]
+      mail: ['Upruebas@gmail.com', [Validators.required, Validators.email]],
+      password: ['prueba', [Validators.required, Validators.minLength(6)]]
     })
   }
-  get email(){
-    return this.formularioLogin.controls.email;
+  get mail() {
+    return this.formularioLogin.controls.mail;
   }
-  get pass(){
+  get pass() {
     return this.formularioLogin.controls.password;
   }
 
-  login(){
+  _error?: string = "";
+
+
+  login(): void {
     if (this.formularioLogin.valid) {
-      const formData: Login = this.formularioLogin.value;
+      const formData: CredencialesLogin = this.formularioLogin.value;
       console.log(formData);
+      this.authService.login(formData).subscribe(
+        (response) => {
+          console.log(response);
+          if (response.isSucces) {
+            localStorage.setItem('token', response.result.token);
+            localStorage.setItem('user', JSON.stringify(response.result.usuario));
+            
+            window.location.href = "/pages";
+          } else {
+
+          }
+        },
+        (error) => {
+          console.log(error);
+          if (error.error.statusCode == 400) {
+            this._error = 'Usuario y/o contraeña incorrecta...';
+          } else {
+            this._error = 'Error en el servidor contactenos...';
+          }
+        }
+      );
     }
-    
+
   }
+
+
+
 
 
 }

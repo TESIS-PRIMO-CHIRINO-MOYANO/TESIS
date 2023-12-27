@@ -8,15 +8,15 @@
                             <h3 class="mb-5 ">Iniciar sesión</h3>
                             <div class="form-outline mb-4 text-start">
                                 <label class="form-label" for="userName">Correo electronico</label>
-                                <input formControlName="email" type="email" id="email"
+                                <input formControlName="mail" type="mail" id="mail"
                                     class="form-control form-control-lg" />
 
-                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                                <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="text-danger">
 
-                                    <div *ngIf="email.errors?.['required']">
+                                    <div *ngIf="mail.errors?.['required']">
                                         El correo es obligatorio...
                                     </div>
-                                    <div *ngIf="email.errors?.['email']">
+                                    <div *ngIf="mail.errors?.['email']">
                                         Ingrese un fromato de correo correcto...
                                     </div>
                                 </div>
@@ -30,7 +30,7 @@
                                         La contraseña es obligatoria...
                                     </div>
                                     <div *ngIf="pass.errors?.['minlength']">
-                                        La contraseña debe tener al menos 8 caracteres...
+                                        La contraseña debe tener al menos 6 caracteres...
                                     </div>
                                 </div>
                                 <button (click)="ocultarPassword = !ocultarPassword" type="button"
@@ -44,6 +44,9 @@
                             </div>
                             <p class="text-center mt-3">¿No tiene cuenta? <a routerLink="/pages/registro">Regístrese</a></p>
                             <p class="text-center mt-3"><a href="#">Olvidé mi contraseña...</a></p>
+                            <div class="alert alert-danger" role="alert" *ngIf="_error?.length != 0 ">
+                                {{_error}}
+                            </div>                                  
                         </form>
                     </div>
                 </div>
