@@ -28,25 +28,25 @@ namespace ApiGestionAgua.Migrations
                 {
                     table.PrimaryKey("PK_Pedido", x => x.IdPedido);
                     table.ForeignKey(
-                        name: "FK_Pedido_Cliente_IdCliente",
+                        name: "FK_Pedido_IdCliente",
                         column: x => x.IdCliente,
                         principalTable: "Cliente",
                         principalColumn: "IdCliente",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pedido_Estado_IdEstado",
+                        name: "FK_Pedido_IdEstado",
                         column: x => x.IdEstado,
                         principalTable: "Estado",
                         principalColumn: "IdEstado",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pedido_Vehiculo_IdPatente",
+                        name: "FK_Pedido_IdPatente",
                         column: x => x.IdPatente,
                         principalTable: "Vehiculo",
                         principalColumn: "IdPatente",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Pedido_Zona_IdZona",
+                        name: "FK_Pedido_IdZona",
                         column: x => x.IdZona,
                         principalTable: "Zona",
                         principalColumn: "IdZona",
@@ -67,13 +67,13 @@ namespace ApiGestionAgua.Migrations
                 {
                     table.PrimaryKey("PK_ProductoPedido", x => new { x.IdPedido, x.IdProducto });
                     table.ForeignKey(
-                        name: "FK_ProductoPedido_Pedido_IdPedido",
+                        name: "FK_ProductoPedido_IdPedido",
                         column: x => x.IdPedido,
                         principalTable: "Pedido",
                         principalColumn: "IdPedido",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductoPedido_Producto_IdProducto",
+                        name: "FK_ProductoPedido_IdProducto",
                         column: x => x.IdProducto,
                         principalTable: "Producto",
                         principalColumn: "IdProducto",
