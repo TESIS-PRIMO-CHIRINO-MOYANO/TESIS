@@ -5,12 +5,12 @@ namespace ApiGestionAgua.Modelos
 {
     public class Pedido
     {
-
+        
         [Key]
         public int IdPedido { get; set; }
 
         [Required]
-        public DateTime Fecha { get; set; }
+        public DateTime FechaPedido { get; set; }
 
         [Required]
         [Column(TypeName = "decimal(11,2)")]
@@ -21,20 +21,22 @@ namespace ApiGestionAgua.Modelos
         [ForeignKey("IdCliente")]
         public Cliente Cliente { get; set; }
 
-        public int IdPatente { get; set; }
+        public int? IdPatente { get; set; }
 
+        
         [ForeignKey("IdPatente")]
         public Vehiculo Vehiculo { get; set; }
 
-        public int IdZona { get; set; }
+        public int IdBarrio { get; set; }
 
-        [ForeignKey("IdZona")]
-        public Zona Zona { get; set; }
+        [ForeignKey("IdBarrio")]
+        public Barrio Barrio { get; set; }
 
         public int IdEstado { get; set; }
 
         [ForeignKey("IdEstado")]
         public Estado Estado { get; set; }
+        
 
     }
 }
