@@ -8,9 +8,9 @@ namespace ApiGestionAgua.Repositorio.IRepositorio
 
         Pedido GetPedido(int IdPedido);
 
-        PedidoDTO GetPedidoCompleto(int IdPedido);
+        PedidoDTO GetPedidoPorIdPedido(int IdPedido);
 
-        PedidoDTO GetPedidoCliente(int IdCliente);
+        List<PedidoDTO> GetPedidoCliente(int IdCliente);
 
         Task<Pedido> CrearPedido(PedidoDTO pedidoDTO);
 
