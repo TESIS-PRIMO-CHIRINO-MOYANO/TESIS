@@ -48,8 +48,9 @@ export class LoginComponent {
           console.log(response);
           if (response.isSucces) {
             localStorage.setItem('token', response.result.token);
-            localStorage.setItem('user', JSON.stringify(response.result.usuario));
-            
+            localStorage.setItem('usuario', JSON.stringify(response.result.usuario));
+            localStorage.setItem('cliente', JSON.stringify(response.result.cliente));
+            localStorage.setItem('cuenta', JSON.stringify(response.result.cuenta));
             window.location.href = "/pages";
           } else {
 

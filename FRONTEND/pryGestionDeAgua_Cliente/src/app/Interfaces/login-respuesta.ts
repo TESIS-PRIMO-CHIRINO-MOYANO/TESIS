@@ -1,3 +1,6 @@
+import { Cliente } from "./cliente";
+import { Cuenta } from "./cuenta-corriente";
+
 export interface User {
     idUsuario: number;
     dni: string;
@@ -18,6 +21,8 @@ export interface LoginResponse {
     errorMessages: string[];
     result: {
         usuario: User;
+        cliente: Cliente;
+        cuenta:Cuenta;
         token: string;
     };
 }

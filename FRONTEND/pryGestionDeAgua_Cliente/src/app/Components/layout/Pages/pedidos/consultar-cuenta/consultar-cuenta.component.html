@@ -4,37 +4,21 @@
     </div>
     <!--TARJETAS RESUMEN-->
     <div class="row">
-        <div class="col-sm-6 col-lg-4 ">
-            <div class="mt-4 px-5 py-2  text-white rounded tarjeta col-tar-1">
-                <h3>Proximo pago:</h3>
-                <p>$1500</p>
-            </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 ">
-            <div class="mt-4 px-5 py-2  text-white rounded tarjeta col-tar-2">
-                <h3>Deuda:</h3>
-                <p>$3000</p>
-            </div>
-        </div>
+        
         <div class="col-sm-6 col-lg-4 ">
             <div class="mt-4 px-5 py-2  text-white rounded tarjeta col-tar-3">
                 <h3>Saldo:</h3>
-                <p>$4500</p>
+                <p>${{saldo}}</p>
             </div>
         </div>
         <div class="col-sm-6 col-lg-4 ">
             <div class="mt-4 px-5 py-2   text-white rounded tarjeta col-tar-4">
                 <h3>Pedidos pendientes:</h3>
-                <p>1</p>
+                <p>{{pedidosPendientes}}</p>
 
             </div>
         </div>
-        <div class="col-sm-6 col-lg-4 ">
-            <div class="mt-4 px-5 py-2  text-white rounded tarjeta col-tar-5">
-                <h3>Estado de cuenta:</h3>
-                <p>Activo</p>
-            </div>
-        </div>
+        
     </div>
     <!--HISTORIAL DE PEDIDOS -->
     <div class="table-responsive mt-3">
@@ -50,20 +34,19 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="">
-                    <td class="">457</td>
-                    <td class="">12/11/2023</td>
-                    <td class="">$1500</td>
-                    <td class=""><span class="badge bg-warning">Pendiente</span></td>
+                <tr class="" *ngFor="let pedido of PedidosUsuario">
+                    <td class="">{{pedido.idPedido}}</td>
+                    <td class="">{{pedido.fechaPedido | date:'dd-MM-yyyy'}}</td>
+                    <td class="">${{pedido.importeTotal}}</td>
+                    <td class="">
+                        <span class="badge bg-warning" *ngIf="pedido.idEstado == 1">Pendiente</span>
+                        <span class="badge bg-success" *ngIf="pedido.idEstado == 2">Entregado</span>
+                        <span class="badge bg-primary" *ngIf="pedido.idEstado == 4">Reporogramado</span>
+                        <span class="badge bg-danger"  *ngIf="pedido.idEstado == 3">Cancelado</span>
+                    </td>
                     <td class=""><a routerLink="/pages/detallePedido">Ver detalle..</a></td>
                 </tr>
-                <tr class="">
-                    <td class="">477</td>
-                    <td class="">12/10/2023</td>
-                    <td class="">$3000</td>
-                    <td class=""><span class="badge bg-success">Entregado</span></td>
-                    <td class=""><a routerLink="/pages/detallePedido">Ver detalle..</a></td>
-                </tr>
+                
             </tbody>
         </table>
     </div>
