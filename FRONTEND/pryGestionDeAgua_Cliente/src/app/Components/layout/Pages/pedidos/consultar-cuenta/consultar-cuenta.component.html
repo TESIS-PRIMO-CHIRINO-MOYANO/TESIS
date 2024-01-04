@@ -1,4 +1,4 @@
-<section class="w-75  centrar">
+<section class="w-75  centrar" >
     <div class="title1">
         <h1>Resumen de cuenta</h1>
     </div>
@@ -44,7 +44,7 @@
                         <span class="badge bg-primary" *ngIf="pedido.idEstado == 4">Reporogramado</span>
                         <span class="badge bg-danger"  *ngIf="pedido.idEstado == 3">Cancelado</span>
                     </td>
-                    <td class=""><a routerLink="/pages/detallePedido">Ver detalle..</a></td>
+                    <td class=""><a routerLink="/pages/detallePedido/{{pedido.idPedido}}">Ver detalle..</a></td>
                 </tr>
                 
             </tbody>

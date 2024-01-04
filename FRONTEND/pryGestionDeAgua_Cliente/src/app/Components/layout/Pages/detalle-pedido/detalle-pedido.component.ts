@@ -1,57 +1,66 @@
 import { Component } from '@angular/core';
 import { ProductoCarrito } from 'src/app/Interfaces/producto-carrito';
-
+import { ActivatedRoute } from '@angular/router'
+import { PedidosService } from 'src/app/Services/pedidos.service';
+import { Pedido } from 'src/app/Interfaces/pedido-api';
+import { DetallePedido } from 'src/app/Interfaces/detalle-pedido';
+import { ProductoInterface } from 'src/app/Interfaces/producto';
+import { ProductoService } from 'src/app/Services/producto.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-detalle-pedido',
   templateUrl: './detalle-pedido.component.html',
   styleUrls: ['./detalle-pedido.component.css']
 })
 export class DetallePedidoComponent {
-  carrito: ProductoCarrito[] = [];
-  total:number = 0 ;
-  sguirComprando: boolean = false;
-  constructor() {
-    
-    this.actualizarLocal();
-  this.calcularTotal();
-    this.exito = false;
-  }
+  idPedido: number = 0;
+  pedido!: Pedido;
+  productos!: DetallePedido[];
+  productoAgregar!: DetallePedido;
+  productoPuro!: ProductoInterface;
+  totalAmostrar: number = 0;
 
-  actualizarLocal(){
-    const carritoEnLocalStorageString = localStorage.getItem('carrito');
-    const carritoEnLocalStorage = carritoEnLocalStorageString ? JSON.parse(carritoEnLocalStorageString) : [];
-  if (carritoEnLocalStorage) {
-    this.carrito = carritoEnLocalStorage;
+  constructor(
+    private ruta: ActivatedRoute,
+    private servicioPedidos: PedidosService,
+    private servicioProductos: ProductoService
+  ) {
+    this.idPedido = Number(this.ruta.snapshot.paramMap.get('idPedido'));
+    console.log(this.idPedido);
+    this.cargarPedido()
+    
   }
-  }
-  calcularTotal(){
-    this.total = 0;
-    this.carrito.forEach((i)=>{
-      this.total += (i.cantidad *i.precio)
+  cargarPedido() {
+    this.servicioPedidos.traerPedidosPorId(this.idPedido).subscribe((results) => {
+      this.pedido = results;
+      console.log(results);
+      this.productos = [];
+      for (const productoPedido of this.pedido.productosPedidoDTO) {
+
+        //traer producto
+        this.servicioProductos.traerProductosPorId(productoPedido.idProducto).subscribe((producto: ProductoInterface) => {
+          this.productoPuro = producto;
+          console.log(this.productoPuro);
+          const productoPvec: DetallePedido = {
+            cantidad: productoPedido.cantidad,
+            nombre: this.productoPuro.nombre,
+            precio: this.productoPuro.precio,
+            urlImagen: this.productoPuro.urlImagen
+          }
+          //calculo del total
+          this.totalAmostrar += productoPvec.cantidad * productoPvec.precio;
+          //guardar producto en el array para mostrar
+          this.productos.push(productoPvec)
+        }, (error) => {
+          console.error(error);
+        });
+      }
     })
   }
-  eliminarElementoCarritoPorId(idProducto: number) {
-    const index = this.carrito.findIndex((producto) => producto.idProducto === idProducto);
 
-    if (index !== -1) {
-      this.carrito.splice(index, 1); // Eliminamos el elemento del array
-      this.guardarCarritoEnLocalStorage();
-      this.calcularTotal();
-    }
-  }
+  
+  
 
-  guardarCarritoEnLocalStorage() {
-    localStorage.setItem('carrito', JSON.stringify(this.carrito));
-    this.actualizarLocal();
-    this.calcularTotal();
-  }
-
-  exito:boolean=false;
-  confirmarPedido() {
-    localStorage.removeItem('carrito');
-    this.actualizarLocal();
-    this.total = 0;
-    this.exito=true;
-    this.sguirComprando = true;
-  }
 }
+
+

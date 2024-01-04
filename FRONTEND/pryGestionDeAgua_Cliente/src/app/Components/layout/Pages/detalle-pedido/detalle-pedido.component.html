@@ -2,7 +2,7 @@
 
 <section class="w-75 vh-100 centrar ">
   <div class="title1">
-    <h1>Detalle del pedido Nro: <small>435</small></h1>
+    <h1>Detalle del pedido Nro: <small>{{idPedido}}</small></h1>
   </div>  
   <div class="table-responsive">
     <table class="table table-hover w-100">
@@ -13,35 +13,29 @@
           <th class="" scope="col">Cantidad</th>
           <th class="" scope="col">Precio</th>
           <th class="" scope="col">Total</th>
-          
-
-        </tr>
       </thead>
-      <tbody *ngFor="let item of carrito">
+      <tbody *ngFor="let prod of productos">
         <tr class="">
           <th class="atext-start" scope="row">
-            <img [src]="item.urlImagen" alt="Logo" width="50" height="50" class=" ">
+            <img [src]="prod.urlImagen" alt="Logo" width="50" height="50" class=" ">
           </th>
-          <td class=" text-start">{{item.nombre}}</td>
-          <td class="" >{{item.cantidad}}</td>
-          <td class="" >${{item.precio}}</td>
-          <td class="" >${{item.cantidad * item.precio}}</td>
+          <td class=" text-start">{{prod.nombre}}</td>
+          <td class="" >{{prod.cantidad}}</td>
+          <td class="" >${{prod.precio}}</td>
+          <td class="" >${{prod.cantidad * prod.precio}}</td>
          
         </tr>
-
       </tbody>
     </table>
-
   </div>
   <div class="row ">
     <div class="col">
-        <h3 class="text-black">Valor total del pedido: ${{total}}</h3>
+        <h3 class="text-black">Valor total del pedido: $ {{totalAmostrar}} </h3>
+        <h4 class="text-black">Fecha de entrega:{{pedido.fechaPedido | date:'dd-MM-yyyy'}}</h4>
     </div>
-    <div class="col d-flex justify-content-end">
-     
-        <button class="btn btn-success" routerLink="/pages/consultarCuenta" >Volver</button>
-    </div>
+    
   </div>
-  
-
+  <div class="col d-flex justify-content-end">     
+    <button class="btn btn-success" routerLink="/pages/consultarCuenta" >Volver</button>
+</div>
 </section>

@@ -9,13 +9,18 @@ import { environment } from 'src/environments/environment';
 })
 export class PedidosService {
 
-  private urlApi:string = environment.endpoint + "pedido/ObtenerPedidosPorCliente/";
+ 
 
   constructor(private http: HttpClient) {}
 
   traerPedidosCliente(idCliente: number): Observable<Pedido[]> {
-    this.urlApi += idCliente; 
-    return this.http.get<Pedido[]>(this.urlApi);
+    var urlApi = environment.endpoint + "pedido/ObtenerPedidosPorCliente/" +  idCliente; 
+    return this.http.get<Pedido[]>(urlApi);
+  }
+
+  traerPedidosPorId(idPedido:number){
+    var urlApi = environment.endpoint + "pedido/ObtenerPedidoPorIdPedido/" +  idPedido; 
+    return this.http.get<Pedido>(urlApi);
   }
   
 }
