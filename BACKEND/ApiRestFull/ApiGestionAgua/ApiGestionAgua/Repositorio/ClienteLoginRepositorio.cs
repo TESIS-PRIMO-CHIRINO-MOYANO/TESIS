@@ -42,7 +42,7 @@ namespace ApiGestionAgua.Repositorio
                 && u.Password == passwordEncriptado
 
                 );
-
+           
             //validamos que el usuario no existe
 
             if (usuario == null) 
@@ -56,6 +56,13 @@ namespace ApiGestionAgua.Repositorio
             }
 
             //aqui existe el usuario, procesamos el login
+            var cliente = _bd.Cliente.FirstOrDefault(
+               u => u.IdUsuario == usuario.IdUsuario
+            );
+
+            var cuenta = _bd.CuentaCorriente.FirstOrDefault(
+               u => u.IdCliente == cliente.IdCliente
+            );
 
             var manejadorToken = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(claveSecreta);
@@ -77,7 +84,9 @@ namespace ApiGestionAgua.Repositorio
             ClienteLoginRespuestaDTO clienteLoginRespuestaDTO = new ClienteLoginRespuestaDTO()
             {
                 Token= manejadorToken.WriteToken(token),
-                Usuario = usuario
+                Usuario = usuario,
+                Cliente = cliente,
+                Cuenta = cuenta
             };
 
             return clienteLoginRespuestaDTO;
