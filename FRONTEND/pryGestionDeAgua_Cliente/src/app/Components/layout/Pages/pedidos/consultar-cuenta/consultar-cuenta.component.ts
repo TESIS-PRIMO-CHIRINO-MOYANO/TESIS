@@ -33,7 +33,7 @@ export class ConsultarCuentaComponent {
     this.servicioPedidos.traerPedidosCliente(this.idCliente).subscribe((results)=>{
       this.PedidosUsuario = results;
       this.pedidosPendientes = this.contarPedidosPendientes(results)
-      console.log(results);
+     
     })
   }
   contarPedidosPendientes(pedidos: Pedido[]): number {

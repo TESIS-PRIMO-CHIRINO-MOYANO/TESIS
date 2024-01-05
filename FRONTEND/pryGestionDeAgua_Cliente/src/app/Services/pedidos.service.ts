@@ -22,5 +22,8 @@ export class PedidosService {
     var urlApi = environment.endpoint + "pedido/ObtenerPedidoPorIdPedido/" +  idPedido; 
     return this.http.get<Pedido>(urlApi);
   }
-  
+  realizarPedido(pedidoData: Pedido): Observable<any> {
+    var urlApi = environment.endpoint + "pedido/crearPedido"
+    return this.http.post<any>(urlApi, pedidoData);
+  }
 }

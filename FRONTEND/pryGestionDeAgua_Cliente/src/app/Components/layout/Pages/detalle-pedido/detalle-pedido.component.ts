@@ -30,17 +30,19 @@ export class DetallePedidoComponent {
     this.cargarPedido()
     
   }
+  fechaPedido?:Date;
   cargarPedido() {
     this.servicioPedidos.traerPedidosPorId(this.idPedido).subscribe((results) => {
       this.pedido = results;
-      console.log(results);
+     
       this.productos = [];
+      this.fechaPedido = this.pedido.fechaPedido;
       for (const productoPedido of this.pedido.productosPedidoDTO) {
 
         //traer producto
         this.servicioProductos.traerProductosPorId(productoPedido.idProducto).subscribe((producto: ProductoInterface) => {
           this.productoPuro = producto;
-          console.log(this.productoPuro);
+          
           const productoPvec: DetallePedido = {
             cantidad: productoPedido.cantidad,
             nombre: this.productoPuro.nombre,
