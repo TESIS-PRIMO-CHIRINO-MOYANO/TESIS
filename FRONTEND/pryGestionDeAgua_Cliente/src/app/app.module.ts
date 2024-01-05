@@ -11,10 +11,13 @@ import { CarritoService } from './Services/carrito.service';
 
 import { SharedModule } from './Reutilizable/shared/shared.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent
+   
+
   ],
     
   imports: [
