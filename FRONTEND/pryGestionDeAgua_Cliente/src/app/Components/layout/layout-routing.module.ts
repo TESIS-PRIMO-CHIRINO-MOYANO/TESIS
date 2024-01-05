@@ -28,9 +28,9 @@ const routes: Routes = [
       {path:'sobreNosotros',component: SobreNosotrosComponent},
       {path:'carrito',component:CarritoComponent},
       {path:'consultarCuenta',component:ConsultarCuentaComponent},
-      {path:'detallePedido',component:DetallePedidoComponent},
       {path:'error', component:PaginaErrorComponent},
       {path:'miCuenta',component:MiCuentaComponent},
+      {path:'detallePedido/:idPedido',component:DetallePedidoComponent},      
       {path:'login', component: LoginComponent},
       {path:'registro', component:RegistroComponent}
 

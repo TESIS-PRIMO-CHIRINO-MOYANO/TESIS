@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/login-respuesta';
 
 @Component({
@@ -9,10 +10,17 @@ import { User } from 'src/app/Interfaces/login-respuesta';
 export class LayoutComponent {
   
   isLogged:boolean = false;
-correoElectronico: any;
-  constructor() {
+  correoElectronico: any;
+  constructor(private router: Router) {
     this.isLogged = this.isLoggedIn();
   }
+
+  navegarAConsultaCUenta(): void {
+    // Navega al componente y recarga la página
+    window.location.href = "/pages/consultarCuenta";
+  }
+
+
   
   isLoggedIn(): boolean {
   const userToken = localStorage.getItem('token');
@@ -33,5 +41,8 @@ correoElectronico: any;
     this.correoElectronico ="";
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('cliente');
+    localStorage.removeItem('cuenta');
   }
 }

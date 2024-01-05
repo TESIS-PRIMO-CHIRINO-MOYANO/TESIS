@@ -126,6 +126,15 @@ namespace ApiGestionAgua.Repositorio
                 _bd.ProductoPedido.Add(productoPedido);
             }
             await _bd.SaveChangesAsync();
+            //Calculop de la deuda
+            var cuentaCorriente = _bd.CuentaCorriente.FirstOrDefault(c => c.IdCliente == pedidoDTO.IdCliente);
+
+            if (cuentaCorriente != null)
+            {
+                cuentaCorriente.Monto = cuentaCorriente.Monto - pedidoDTO.ImporteTotal ;
+                
+                _bd.SaveChanges();
+            }
             return pedido;
         }
 
