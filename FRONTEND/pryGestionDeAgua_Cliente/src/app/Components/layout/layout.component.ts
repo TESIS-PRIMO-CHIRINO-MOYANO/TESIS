@@ -10,7 +10,7 @@ import { User } from 'src/app/Interfaces/login-respuesta';
 export class LayoutComponent {
   
   isLogged:boolean = false;
-  correoElectronico: any;
+  nombre: any;
   constructor(private router: Router) {
     this.isLogged = this.isLoggedIn();
   }
@@ -25,24 +25,26 @@ export class LayoutComponent {
   isLoggedIn(): boolean {
   const userToken = localStorage.getItem('token');
     if (userToken !== null) {
-      const usuarioString = localStorage.getItem('user');
+      const usuarioString = localStorage.getItem('usuario');
       const usuario: User = usuarioString ? JSON.parse(usuarioString) : null;
-      this.correoElectronico = usuario ? usuario.mail : null;
+      this.nombre = usuario ? usuario.nombre + " " + usuario.apellido : null;
+
       return true;
       
     } else {
       localStorage.removeItem('carrito');
-      this.correoElectronico ="";
+      this.nombre ="";
       return false;
     }
   }
   logout(): void {
     this.isLogged = false;
-    this.correoElectronico ="";
+    this.nombre ="";
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('usuario');
     localStorage.removeItem('cliente');
     localStorage.removeItem('cuenta');
+    window.location.href = "/pages/inicio";
   }
 }
