@@ -146,7 +146,7 @@
                                     <div *ngIf="pass.errors?.['required']">
                                         La contraseña es obligatoria...
                                     </div>
-                                    <div *ngIf="pass.errors?.['minlength']">
+                                    <div *ngIf="pass.errors && pass.errors['minlength']">
                                         La contraseña debe tener al menos ocho caracteres...
                                     </div>
                                 </div>
