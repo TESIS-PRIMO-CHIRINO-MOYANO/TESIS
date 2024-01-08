@@ -124,17 +124,24 @@ namespace ApiGestionAgua.Repositorio
                 };
 
                 _bd.ProductoPedido.Add(productoPedido);
+                //calculo del stock
+                Producto producto = _bd.Producto.FirstOrDefault(p => p.IdProducto == productoPedido.IdProducto);
+                producto.Stock = producto.Stock - productoPedido.Cantidad;
+                _bd.Producto.Update(producto);
             }
             await _bd.SaveChangesAsync();
-            //Calculop de la deuda
+            //Calculo de la deuda
             var cuentaCorriente = _bd.CuentaCorriente.FirstOrDefault(c => c.IdCliente == pedidoDTO.IdCliente);
 
             if (cuentaCorriente != null)
             {
-                cuentaCorriente.Monto = cuentaCorriente.Monto - pedidoDTO.ImporteTotal ;
-                
+                cuentaCorriente.Monto = cuentaCorriente.Monto - pedidoDTO.ImporteTotal;
+
                 _bd.SaveChanges();
             }
+
+            
+
             return pedido;
         }
 
