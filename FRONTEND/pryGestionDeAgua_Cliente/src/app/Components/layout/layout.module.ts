@@ -16,6 +16,9 @@ import { DetallePedidoComponent } from './Pages/detalle-pedido/detalle-pedido.co
 import { LoginComponent } from './Pages/login/login.component';
 import { RegistroComponent } from './Pages/registro/registro.component';
 import { SharedModule } from 'src/app/Reutilizable/shared/shared.module';
+import { PaginaErrorComponent } from './Pages/pagina-error/pagina-error.component';
+import { MiCuentaComponent } from './Pages/mi-cuenta/mi-cuenta.component';
+
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { SharedModule } from 'src/app/Reutilizable/shared/shared.module';
     ConsultarCuentaComponent,
     DetallePedidoComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    PaginaErrorComponent,
+    MiCuentaComponent
+   
     
   ],
   imports: [

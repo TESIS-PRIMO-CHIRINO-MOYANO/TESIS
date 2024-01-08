@@ -3403,20 +3403,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\Romi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Usuario\\Desktop\\GIT-Tesis\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
+      "projectUniqueName": "C:\\Users\\Romi\\Desktop\\Tesis\\TESIS\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
       "projectName": "ApiGestionAgua",
-      "projectPath": "C:\\Users\\Usuario\\Desktop\\GIT-Tesis\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Usuario\\Desktop\\GIT-Tesis\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\obj\\",
+      "projectPath": "C:\\Users\\Romi\\Desktop\\Tesis\\TESIS\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\ApiGestionAgua.csproj",
+      "packagesPath": "C:\\Users\\Romi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Romi\\Desktop\\Tesis\\TESIS\\TESIS\\BACKEND\\ApiRestFull\\ApiGestionAgua\\ApiGestionAgua\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Romi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
@@ -3487,7 +3495,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

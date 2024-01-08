@@ -3,26 +3,25 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormsModule } from '@a
 import { Router } from '@angular/router';
 import { BarrioService } from 'src/app/Services/barrio.service';
 import { BarrioInterface } from 'src/app/Interfaces/barrio';
-import { RegistroClienteInterface } from 'src/app/Interfaces/registro-cliente';
-import { RegistroClienteService } from 'src/app/Services/registro-cliente.service';
-
+import { miCuentaInterface } from 'src/app/Interfaces/miCuenta';
+import { micuentaService } from 'src/app/Services/miCuenta.service';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-mi-cuenta',
+  templateUrl: './mi-cuenta.component.html',
+  styleUrls: ['./mi-cuenta.component.css']
 })
-export class RegistroComponent {
-  formularioRegistro:FormGroup;
+export class MiCuentaComponent {
+  formulariomicuenta:FormGroup;
   ocultarPass:boolean = true;
 
   constructor(
     private fb:FormBuilder,
     private router:Router,
     private servicioBarrios:BarrioService,
-    private servicioRegistroCliente: RegistroClienteService
+    private serviciomiCuenta: micuentaService
   ) {
-    this.formularioRegistro=this.fb.group({
+    this.formulariomicuenta=this.fb.group({
       dni: ['', Validators.required],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -37,57 +36,55 @@ export class RegistroComponent {
       idBarrio: ['', Validators.required],
       sexo: ['',Validators.required],
     });
-
-
-    
   }
-  ngOnInit(): void {
-    this.traerBarrios()
+  ngOnInit(): void { 
+    this.traerBarrios() 
   }
-  //Getters para los campos de los fomularios
+ 
+   //Getters para los campos de los fomularios
   get nombre(){
-    return this.formularioRegistro.controls.nombre;
+    return this.formulariomicuenta.controls.nombre;
   }
   get apellido(){
-    return this.formularioRegistro.controls.apellido;
+    return this.formulariomicuenta.controls.apellido;
   }
   get sexo(){
-    return this.formularioRegistro.controls.sexo;
+    return this.formulariomicuenta.controls.sexo;
   }
   get dni(){
-    return this.formularioRegistro.controls.dni;
+    return this.formulariomicuenta.controls.dni;
   }
   get idBarrio(){
-    return this.formularioRegistro.controls.idBarrio;
+    return this.formulariomicuenta.controls.idBarrio;
   }
   get calle(){
-    return this.formularioRegistro.controls.calle;
+    return this.formulariomicuenta.controls.calle;
   }
   get piso(){
-    return this.formularioRegistro.controls.piso;
+    return this.formulariomicuenta.controls.piso;
   }
   get telefono(){
-    return this.formularioRegistro.controls.telefono;
+    return this.formulariomicuenta.controls.telefono;
   }
   get mail(){
-    return this.formularioRegistro.controls.mail;
+    return this.formulariomicuenta.controls.mail;
   }
   get pass(){
-    return this.formularioRegistro.controls.password;
+    return this.formulariomicuenta.controls.pass;
   }
   get fechaNacimiento(){
-    return this.formularioRegistro.controls.fechaNacimiento;
+    return this.formulariomicuenta.controls.fechaNacimiento;
   }
   _error?:string= "";
   _exito?:string= "";
   onSubmit() {
-    if (this.formularioRegistro.valid) {
-      const registroData: RegistroClienteInterface = this.formularioRegistro.value;
+    if (this.formulariomicuenta.valid) {
+      const registroData: miCuentaInterface = this.formulariomicuenta.value;
       registroData.dni = registroData.dni.toString();
-      this.servicioRegistroCliente.registrarUsuario(registroData)
+      this.serviciomiCuenta.registrarUsuario(registroData)
       .subscribe(
         (respuesta) => {
-          this._exito ='.......',
+          this._exito ='.............',
           setTimeout(() => {
             
             this.router.navigate(['/pages/login'])

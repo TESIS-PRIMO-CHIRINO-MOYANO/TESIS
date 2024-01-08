@@ -1,5 +1,5 @@
 
-<div class="card w-100 mx-auto" *ngIf="producto.stock > 0">
+<div class="card w-100 mx-auto">
     <div class="card-side front card-body tarjeta">
         <img src="{{producto.urlImagen}}" class="card-img-top imagen" alt="...">
         <div class="card-body">
@@ -25,34 +25,37 @@
                                 <button type="button" class="btn btn-color w-75  " [disabled]="valorNumeric <= 1" (click)="valorNumeric = valorNumeric - 1">
                                     <i class="bi bi-dash-lg"></i>
                                 </button>
+
                             </div>
                             <div class="col  text-center">
                                 <input type="text" readonly class="form-control text-center w-100 " value="{{valorNumeric}}">
+
                             </div>
                             <div class="col text-end">
-                                <button type="button" class="btn btn-color w-75" (click)="valorNumeric = valorNumeric + 1">
+                                <button type="button" class="btn btn-color  w-75  " (click)="valorNumeric = valorNumeric+ 1">
                                     <i class="bi bi-plus-lg"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <div class="centrar w-75 w-100 mt-1">
-                        <div class="alert alert-danger p-3 my-1" role="alert" *ngIf="valorNumeric > producto.stock">
-                            No hay stock disponible para la cantidad ingresada....
-                          </div>
+                    <div class="centrar w-75 my-3">
                         <h6 class=" text-bold">Total: ${{calcularTotal(producto.precio)}}</h6>
                     </div>
+
+
                 </div>
+
+
             </div>
-            <button type="button" 
-            class="w-100 btn btn-color btn-outline-primary p-1 my-2" 
-            (click)="agregarAlCarrito(producto.idProducto, producto.nombre, valorNumeric, producto.precio, producto.urlImagen)"
-            [disabled]="valorNumeric > producto.stock">
-                <i class="bi bi-cart-plus mx-2"></i>Agregar al carrito
-            </button>
-            <div class="d-grid gap-2" *ngIf="mensajeAgregado">    
-                <span class="badge  bg-success  tamaño-mensaje">Producto Agregado con exito</span>
-            </div>
+
+            <button type="button" class="w-100 btn btn-color btn-outline-primary p-1 my-3" (click)="agregarAlCarrito(producto.idProducto, producto.nombre, valorNumeric, producto.precio, producto.urlImagen)"><i
+                    class="bi bi-cart-plus mx-2"></i>Agregar al carrito</button>
+
+                    <div class="d-grid gap-2" *ngIf="mensajeAgregado">
+                        
+                        <span class="badge  bg-success  tamaño-mensaje">Producto Agregado con exito</span>
+                    </div>
         </div>
+
     </div>
 </div>
