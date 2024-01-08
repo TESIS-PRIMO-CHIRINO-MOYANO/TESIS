@@ -27,7 +27,7 @@ export class RegistroComponent {
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       mail: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       fechaNacimiento: ['', Validators.required],
       idRol: [1, Validators.required],
       calle: [''],
@@ -37,9 +37,6 @@ export class RegistroComponent {
       idBarrio: ['', Validators.required],
       sexo: ['',Validators.required],
     });
-
-
-    
   }
   ngOnInit(): void {
     this.traerBarrios()
@@ -87,7 +84,7 @@ export class RegistroComponent {
       this.servicioRegistroCliente.registrarUsuario(registroData)
       .subscribe(
         (respuesta) => {
-          this._exito ='.......',
+          this._exito ='Se registro exitosamente',
           setTimeout(() => {
             
             this.router.navigate(['/pages/login'])

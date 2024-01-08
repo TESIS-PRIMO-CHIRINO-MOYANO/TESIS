@@ -6,6 +6,7 @@ import { BarrioInterface } from 'src/app/Interfaces/barrio';
 import { miCuentaInterface } from 'src/app/Interfaces/miCuenta';
 import { micuentaService } from 'src/app/Services/miCuenta.service';
 
+
 @Component({
   selector: 'app-mi-cuenta',
   templateUrl: './mi-cuenta.component.html',
@@ -26,7 +27,7 @@ export class MiCuentaComponent {
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       mail: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       fechaNacimiento: ['', Validators.required],
       idRol: [1, Validators.required],
       calle: [''],
@@ -70,7 +71,7 @@ export class MiCuentaComponent {
     return this.formulariomicuenta.controls.mail;
   }
   get pass(){
-    return this.formulariomicuenta.controls.pass;
+    return this.formulariomicuenta.controls.password;
   }
   get fechaNacimiento(){
     return this.formulariomicuenta.controls.fechaNacimiento;
@@ -104,6 +105,7 @@ export class MiCuentaComponent {
   traerBarrios(){
     this.servicioBarrios.traerBarrios().subscribe((result)=>{
     this._barrios = result;
+    console.log(result);
     })
   }
 }
