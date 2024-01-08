@@ -32,9 +32,20 @@ export class ConsultarCuentaComponent {
   cargarPedidosUsuario() {      
     this.servicioPedidos.traerPedidosCliente(this.idCliente).subscribe((results)=>{
       this.PedidosUsuario = results;
+      this.PedidosUsuarioParaMostar = results;
       this.pedidosPendientes = this.contarPedidosPendientes(results)
      
     })
+  }
+  PedidosUsuarioParaMostar: Pedido[] = [];
+  estadoSeleccionado: string = '';
+  filtrarPorEstados(idEstado:string){
+    let idEstadoNumber =  parseInt(idEstado)
+    this.PedidosUsuarioParaMostar = this.PedidosUsuario;
+    if(idEstadoNumber == 0 ){
+      return
+    }
+    this.PedidosUsuarioParaMostar = this.PedidosUsuarioParaMostar.filter(pedido => pedido.idEstado == idEstadoNumber);   
   }
   contarPedidosPendientes(pedidos: Pedido[]): number {
     return pedidos.filter(pedido => pedido.idEstado == 1).length;
