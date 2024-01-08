@@ -43,7 +43,6 @@ export class RegistroComponent {
   }
   ngOnInit(): void {
     this.traerBarrios()
-    
   }
   //Getters para los campos de los fomularios
   get nombre(){
@@ -88,7 +87,7 @@ export class RegistroComponent {
       this.servicioRegistroCliente.registrarUsuario(registroData)
       .subscribe(
         (respuesta) => {
-          this._exito ='Registro exitoso, Aguarde y sera redirigido...',
+          this._exito ='.......',
           setTimeout(() => {
             
             this.router.navigate(['/pages/login'])
@@ -107,7 +106,7 @@ export class RegistroComponent {
   _barrios?:BarrioInterface[];
   traerBarrios(){
     this.servicioBarrios.traerBarrios().subscribe((result)=>{
-     this._barrios = result;
+    this._barrios = result;
     })
   }
 }

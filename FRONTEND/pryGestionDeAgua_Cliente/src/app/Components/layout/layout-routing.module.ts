@@ -23,13 +23,12 @@ const routes: Routes = [
     children:[
       {path:'', component: InicioComponent},
       {path:'inicio', component: InicioComponent},
-      {path:'miCuenta', component: DashboardComponent},
+      {path:'micuenta', component: MiCuentaComponent},
       {path:'productos', component: ProductosComponent},
       {path:'sobreNosotros',component: SobreNosotrosComponent},
       {path:'carrito',component:CarritoComponent},
       {path:'consultarCuenta',component:ConsultarCuentaComponent},
       {path:'error', component:PaginaErrorComponent},
-      {path:'miCuenta',component:MiCuentaComponent},
       {path:'detallePedido/:idPedido',component:DetallePedidoComponent},      
       {path:'login', component: LoginComponent},
       {path:'registro', component:RegistroComponent}
