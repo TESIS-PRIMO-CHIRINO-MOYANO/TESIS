@@ -20,7 +20,24 @@
         </div>
         
     </div>
+    <!--Filtro para pedido-->
+    <div class="row mt-5">
+        <div class="col-md-10">
+          <select class="form-select"  [(ngModel)]="estadoSeleccionado">
+            <option value="" selected disabled hidden>Seleccione un estado a filtrar...</option>
+            <option value="0">Todos</option>
+            <option value="1">Pendiente</option>
+            <option value="2">Entregado</option>
+            <option value="3">Cancelado</option>
+            <option value="4">Reprogramado</option>
+          </select> 
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-primary w-100" (click)="filtrarPorEstados(estadoSeleccionado)" type="submit">Filtrar</button>
+        </div>
+      </div>
     <!--HISTORIAL DE PEDIDOS -->
+
     <div class="table-responsive mt-3">
         <table class="table table-hover w-100">
             <thead>
@@ -34,7 +51,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="" *ngFor="let pedido of PedidosUsuario">
+                <tr class="" *ngFor="let pedido of PedidosUsuarioParaMostar">
                     <td class="">{{pedido.idPedido}}</td>
                     <td class="">{{pedido.fechaPedido | date:'dd-MM-yyyy'}}</td>
                     <td class="">${{pedido.importeTotal}}</td>

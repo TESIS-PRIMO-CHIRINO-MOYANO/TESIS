@@ -112,13 +112,19 @@ export class CarritoComponent {
         this.exito=true;
         this.sguirComprando = true;
         this.error = false;
+        setTimeout(() => {
+          window.location.href = "/pages/consultarCuenta";
+        }, 2000);
+        
       },
       error => {
         this.error = true;
       }
+
     );
 
-   
+      
+
   }
 
 }
